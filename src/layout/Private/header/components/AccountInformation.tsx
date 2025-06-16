@@ -21,7 +21,7 @@ import {
   setIsCheckUpdateDataInfo,
   updateDataInfo,
 } from "../../../../stores/auth/slice";
-import { uploads } from "../../../../utils/uploads";
+import uploads from "../../../../utils/uploads";
 import { IconArrowDown } from "../../../../components/icon/ArrowDown";
 
 interface InfoProps {

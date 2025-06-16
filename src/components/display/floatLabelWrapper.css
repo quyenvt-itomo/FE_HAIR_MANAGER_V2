@@ -20,7 +20,7 @@
 
 .float-label .label {
   position: absolute;
-  left: 8px;
+  left: 4px;
   top: 50%;
   transform: translateY(-50%);
   transition: all 0.2s ease;
@@ -48,6 +48,7 @@
 
 .float-label .as-label {
   color: rgba(0, 0, 0, 0.6);
+
 }
 
 .float-label .as-label .label-line::before {

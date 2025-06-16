@@ -10,8 +10,7 @@ import {
 } from "antd";
 import React, { useEffect, useState } from "react";
 import { InboxOutlined } from "@ant-design/icons";
-import { useExcelData } from "../../hooks/useExcelData";
-import { ExcelType } from "../../models/excel_model";
+import { ExcelType, ImportExcelData } from "../../models/base/excel_model";
 import uploads from "../../utils/uploads";
 
 const { Dragger } = Upload;
@@ -19,17 +18,28 @@ const { Dragger } = Upload;
 type ModalAddProps = {
   open: boolean;
   type: ExcelType;
+  loading: boolean;
   setClose: () => void;
+  onGetCurrentTemplate: () => void;
+  onImportCurrentExcel: (data: ImportExcelData) => void;
 };
 
 const ModalImportExcel: React.FC<ModalAddProps> = ({
   open,
   type,
+  loading,
   setClose,
+  onGetCurrentTemplate,
+  onImportCurrentExcel,
 }) => {
   const [form] = Form.useForm();
   const [file, setFile] = useState(null);
-  const { loading, getCurrentTemplate, importCurrentExcel } = useExcelData();
+
+  useEffect(() => {
+    if (!open) {
+      setFile(null);
+    }
+  }, [open]);
 
   useEffect(() => {
     if (loading) {
@@ -81,7 +91,7 @@ const ModalImportExcel: React.FC<ModalAddProps> = ({
     formData.append("keys[]", keys[0]);
     const response = await uploads(formData, keys);
     if (!response) return;
-    importCurrentExcel({
+    onImportCurrentExcel({
       type,
       file_url: response.file_url,
     });
@@ -124,11 +134,7 @@ const ModalImportExcel: React.FC<ModalAddProps> = ({
             ) : (
               <a
                 className="text-blue-500 font-bold underline cursor-pointer"
-                onClick={() =>
-                  getCurrentTemplate({
-                    type: type,
-                  })
-                }
+                onClick={() => onGetCurrentTemplate()}
               >
                 Tải file mẫu
               </a>

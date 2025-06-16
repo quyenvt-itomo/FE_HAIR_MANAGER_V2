@@ -28,7 +28,7 @@ const SupplierPage: React.FC = () => {
   } = useSupplierData({
     keyword,
     page,
-    limit: pageLimit,
+    size: pageLimit,
     onCloseModal: () => {
       handleClose();
     },

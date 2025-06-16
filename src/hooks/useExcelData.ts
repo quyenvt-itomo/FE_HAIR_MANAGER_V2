@@ -9,21 +9,24 @@ import {
 } from "../stores/excel/slice";
 
 import { downloadFile } from "../utils/downloadFile";
-import { ExcelTemplateQuery, ExportExcelQuery, ImportExcelData } from "../models/base/excel_model";
+import {
+  ExportExcelQuery,
+  FileType,
+  ImportExcelData,
+} from "../models/base/excel_model";
 import { showImportResultModal } from "../components/modal/ImportResult";
 
-export type useExcelDataParams = {
-  isLockHook?: boolean;
-};
+interface useExcelDataParams extends Omit<ExportExcelQuery, "fileType"> {}
 
-export const useExcelData = ({ isLockHook }: useExcelDataParams) => {
+export const useExcelData = (query?: useExcelDataParams) => {
   const dispatch = useDispatch();
   const { import_result, loading, template, export_result } = useSelector(
     (state: RootState) => state.Excel,
     shallowEqual
   );
 
-  const getCurrentTemplate = (query: ExcelTemplateQuery) => {
+  const getCurrentTemplate = () => {
+    if (!query) return;
     dispatch(getTemplate(query));
   };
 
@@ -31,24 +34,25 @@ export const useExcelData = ({ isLockHook }: useExcelDataParams) => {
     dispatch(importExcel(excelData));
   };
 
-  const exportCurrentExcel = (query?: ExportExcelQuery) => {
-    dispatch(exportExcel(query));
+  const exportCurrentExcel = (fileType: FileType) => {
+    if (!query) return;
+    dispatch(exportExcel({ ...query, fileType }));
   };
 
   useEffect(() => {
-    if (!template || isLockHook) return;
+    if (!template || query) return;
     downloadFile(template.url);
     dispatch(resetExcel());
   }, [template]);
 
   useEffect(() => {
-    if (!import_result || isLockHook) return;
+    if (!import_result || query) return;
     dispatch(resetExcel());
     showImportResultModal(import_result);
   }, [import_result]);
 
   useEffect(() => {
-    if (!export_result || isLockHook) return;
+    if (!export_result || query) return;
     console.log("Export result changed:", export_result);
 
     dispatch(resetExcel());

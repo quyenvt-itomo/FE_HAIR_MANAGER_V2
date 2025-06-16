@@ -17,8 +17,8 @@ import { useEffect, useState } from "react";
 import { AddUpdateModalProps } from "../../../../../models/base/add_update_modal_model";
 import UploadPictureCircle from "../../../../../components/upload/UploadPictureCircle";
 import InputMoney from "../../../../../components/input/InputMoney";
-import { uploads } from "../../../../../utils/uploads";
 import { mapFileList } from "../../../../../utils/formatFilesUtil";
+import uploads from "../../../../../utils/uploads";
 
 const AddUpdateModal: React.FC<AddUpdateModalProps<SupplierData>> = ({
   open,
@@ -57,9 +57,9 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<SupplierData>> = ({
     if (fileList.length === 0) {
       avatar = null;
     } else if (fileList[0].originFileObj) {
-      const response = await uploads([fileList[0]]);
-      if (!response) return;
-      avatar = response[0];
+      // const response = await uploads([fileList[0]]);
+      // if (!response) return;
+      // avatar = response[0];
     } else {
       avatar = editData?.avatar;
     }

@@ -1,48 +1,37 @@
-import axios from "axios";
 import { notification } from "antd";
-import { BASE_URL } from "../constants/ApiEndpoint";
+import { apiEndpoint, BASE_URL } from "../constants/ApiEndpoint";
 
-export const uploads = async (
-  newFiles: File[] | { originFileObj?: File }[]
-) => {
-  if (!newFiles || newFiles.length === 0) return [];
-
-  const formData = new FormData();
-  newFiles.forEach((file) => {
-    if ("originFileObj" in file && file.originFileObj) {
-      formData.append("pictures", file.originFileObj);
-    } else if (file instanceof File) {
-      formData.append("pictures", file);
-    }
-  });
-
+async function uploads<T extends readonly string[]>(
+  formData: FormData,
+  keys: T // ✅ keys được infer chính xác
+): Promise<Record<T[number], string> | null> {
   try {
-    const response = await axios.post(
-      `${BASE_URL}/util/upload-pictures`,
-      formData,
+    const deviceId = localStorage.getItem("deviceId");
+    const response = await fetch(
+      `${BASE_URL}${apiEndpoint.uploads}?deviceId=${deviceId}`,
       {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
+        method: "POST",
+        body: formData,
+        credentials: "include",
       }
     );
 
-    if (response.status === 200 && response.data) {
-      return response.data.data;
-    } else {
-      notification.error({
-        message: "Upload thất bại",
-        description: "Upload ảnh không thành công.",
-      });
-      return null;
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
+
+    const result: Record<T[number], string> = await response.json(); // ✅ Giữ kiểu chính xác từ keys
+    return result;
   } catch (error) {
-    console.error("Upload error:", error);
+    console.error("There was a problem with the fetch operation:", error);
+
     notification.error({
-      message: "Lỗi khi upload",
-      description: "Có lỗi xảy ra trong quá trình upload ảnh.",
+      message: "Upload Failed",
+      description: "Tải lên không thành công. Vui lòng thử lại.",
     });
+
     return null;
   }
-};
+}
+
+export default uploads;

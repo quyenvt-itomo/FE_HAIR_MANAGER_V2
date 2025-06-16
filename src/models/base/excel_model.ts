@@ -10,15 +10,13 @@ export type ExcelType =
   | "purchaseContract"
   | "bankTransaction";
 
+export type FileType = "excel" | "pdf";
+
 export interface ExportExcelQuery
   extends Omit<ApiRequestQuery, "page" | "size" | "keyword"> {
   type: ExcelType;
   id?: number;
-  fileType?: "pdf" | "excel";
-}
-
-export interface ExcelTemplateQuery {
-  type: ExcelType;
+  fileType?: FileType;
 }
 
 export interface ImportExcelData {

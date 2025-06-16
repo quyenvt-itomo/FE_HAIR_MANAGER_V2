@@ -25,7 +25,7 @@ export interface EmployeeData {
   permission_group_ids?: number[];
   permission_group: PermissionGroupData[];
 
-  leader_of_team?: number[];
+  // leader_of_team?: number[];
   leader_of_team?: any[];
 
   access: boolean;

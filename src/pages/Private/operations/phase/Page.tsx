@@ -13,7 +13,7 @@ const PhasePage: React.FC = () => {
 
   const { phaseData } = usePhaseData({
     page: 1,
-    limit: 50,
+    size: 50,
     get_for_me: true,
     onCloseModal: () => {},
   });

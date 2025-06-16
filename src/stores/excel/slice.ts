@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { TypeMessage } from "../../enums/typeMessage";
-import i18next from "i18next";
 import {
   ExcelTemplateData,
-  ExcelTemplateQuery,
   ImportExcelData,
   ExcelResponse,
   ExportExcelQuery,
@@ -45,11 +43,11 @@ const excelSlice = createSlice({
     },
 
     // TODO: Get template
-    getTemplate: (state, action: PayloadAction<ExcelTemplateQuery>) => {
-      // state.loading = true;
+    getTemplate: (state, action: PayloadAction<ExportExcelQuery>) => {
+      state.loading = true;
     },
     getTemplateSuccess: (state, action: PayloadAction<ExcelResponse>) => {
-      // state.loading = false;
+      state.loading = false;
       state.template = action.payload.data;
       state.message = {
         type: TypeMessage.success,

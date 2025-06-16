@@ -28,7 +28,7 @@ const CustomerPage: React.FC = () => {
   } = useCustomerData({
     keyword,
     page,
-    limit: pageLimit,
+    size: pageLimit,
     onCloseModal: () => {
       handleClose();
     },

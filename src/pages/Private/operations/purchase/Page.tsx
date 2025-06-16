@@ -48,7 +48,7 @@ const PurchasePage: React.FC = () => {
     {
       keyword,
       page,
-      limit: pageLimit,
+      size: pageLimit,
       sortBy: sortField,
       sortType,
       filters,

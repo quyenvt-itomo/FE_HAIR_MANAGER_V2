@@ -22,7 +22,7 @@ const PermissionGroupSelect: React.FC<MultipleSelectProps<PermissionGroupData>> 
 
   const { permissionGroupData, loading, pagination } = usePermissionGroupData({
     page,
-    limit: 100,
+    size: 100,
     keyword,
     isLockHook,
   });

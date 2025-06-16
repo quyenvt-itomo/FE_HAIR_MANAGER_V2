@@ -22,7 +22,7 @@ const PhaseSelect: React.FC<MultipleSelectProps<PhaseData>> = ({
 
   const { phaseData, loading, pagination } = usePhaseData({
     page,
-    limit: 100,
+    size: 100,
     keyword,
     isLockHook,
   });

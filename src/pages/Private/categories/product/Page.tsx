@@ -24,7 +24,7 @@ const ProductPage: React.FC = () => {
   const { productData, loading, pagination, deleteProduct } = useProductData({
     keyword,
     page,
-    limit: pageLimit,
+    size: pageLimit,
     sortBy: sortField,
     sortType,
     onCloseModal: () => {

@@ -79,7 +79,7 @@ const LoginPage: React.FC<PageProps> = () => {
             <img src={icons.logo} className="h-10" />
           </div>
           <span className="text-primary">
-            Phần mềm quản lý doanh nghiệp sản xuất thép
+            Phần mềm quản lý doanh nghiệp sản xuất tóc
           </span>
         </div>
       </div>

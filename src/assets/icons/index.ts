@@ -42,6 +42,7 @@ import editOrder from "./editOrder.svg";
 import editOrderWhite from "./editOrderWhite.svg";
 import exportExcel from "./exportExcel.svg";
 import exportExcelWhite from "./exportExcelWhite.svg";
+import filePDF from "./filePDF.svg";
 import FileReturn from "./FileReturn.svg";
 import FileText from "./FileText.svg";
 import filter from "./filter.svg";
@@ -146,6 +147,7 @@ export const icons = {
   editOrderWhite,
   exportExcel,
   exportExcelWhite,
+  filePDF,
   FileReturn,
   filter,
   filterActive,

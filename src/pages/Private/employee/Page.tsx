@@ -27,7 +27,7 @@ const EmployeePage: React.FC = () => {
   } = useEmployeeData({
     keyword,
     page,
-    limit: pageLimit,
+    size: pageLimit,
     onCloseModal: () => {
       setOpen(false);
       setEditData(undefined);

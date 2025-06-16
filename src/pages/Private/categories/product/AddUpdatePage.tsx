@@ -29,7 +29,6 @@ import { ProductData } from "../../../../models/categories/product";
 import { HOST_URL } from "../../../../constants/ApiEndpoint";
 import { CSS } from "../../../../constants/UI";
 import SubmitButton from "../../../../components/button/SubmitButton";
-import { uploads } from "../../../../utils/uploads";
 import { useProductData } from "../../../../hooks/categories/useProductData";
 import { privateRoutesName } from "../../../../constants/routerName";
 import { shallowEqual, useSelector } from "react-redux";
@@ -40,6 +39,7 @@ import { LengthData } from "../../../../models/categories/attribute";
 import CustomTitle from "../../../../layout/Private/header/components/Title";
 import ProductTypeSelect from "../../../../components/manager_select/ProductTypeSelect";
 import WarehouseSelect from "../../../../components/select/WarehouseSelect";
+import uploads from "../../../../utils/uploads";
 
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 

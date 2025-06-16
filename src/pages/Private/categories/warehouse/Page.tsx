@@ -30,7 +30,7 @@ const WarehousePage: React.FC = () => {
   } = useWarehouseData({
     keyword,
     page,
-    limit: pageLimit,
+    size: pageLimit,
     onCloseModal: () => {
       setOpenDelete(false);
     },

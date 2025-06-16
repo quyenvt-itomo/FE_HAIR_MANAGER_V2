@@ -121,7 +121,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
       </div>
       <Form
         layout="vertical"
-        className="flex flex-col mt-5 gap-6"
+        className="flex flex-col mt-5 gap-6 bg-slate-600"
         form={form}
         initialValues={{ remember: true, is_create_account: false }}
         onFinish={onFinish}

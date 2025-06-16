@@ -17,8 +17,8 @@ import { useEffect, useState } from "react";
 import { AddUpdateModalProps } from "../../../../../models/base/add_update_modal_model";
 import UploadPictureCircle from "../../../../../components/upload/UploadPictureCircle";
 import InputMoney from "../../../../../components/input/InputMoney";
-import { uploads } from "../../../../../utils/uploads";
 import { mapFileList } from "../../../../../utils/formatFilesUtil";
+import uploads from "../../../../../utils/uploads";
 
 const AddUpdateModal: React.FC<AddUpdateModalProps<CustomerData>> = ({
   open,
