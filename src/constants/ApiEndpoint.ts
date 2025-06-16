@@ -6,12 +6,15 @@ export const apiEndpoint = {
   // uploads
   uploads: "/uploads",
 
+  // code
+  code: "/bill-number",
+
   // auth
   auth: {
     login: `auth/login`,
     logout: `auth/logout`,
     data_info: "auth/info",
-    update_data_info: "auth/update-info",
+    update_info: "auth/update-info",
     change_password: "",
   },
 

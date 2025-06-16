@@ -22,7 +22,7 @@ const CustomerSelect: React.FC<MultipleSelectProps<CustomerData>> = ({
 
   const { customerData, loading, pagination } = useCustomerData({
     page,
-    limit: 20,
+    size: 20,
     keyword,
     isLockHook,
   });

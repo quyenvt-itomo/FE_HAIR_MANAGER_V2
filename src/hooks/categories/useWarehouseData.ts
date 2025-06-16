@@ -20,7 +20,7 @@ interface UseWahouseDataParams extends UseDataParams {
 export const useWarehouseData = ({
   keyword,
   page,
-  limit,
+  size,
   sortBy,
   sortType,
   onCloseModal,
@@ -47,7 +47,7 @@ export const useWarehouseData = ({
     dispatch(
       getAll({
         page,
-        limit,
+        size,
         keyword,
         product_id
       })
@@ -72,7 +72,7 @@ export const useWarehouseData = ({
 
   useEffect(() => {
     fetchWarehouseData();
-  }, [dispatch, page, limit, keyword, sortBy, sortType, isLockHook, product_id]);
+  }, [dispatch, page, size, keyword, sortBy, sortType, isLockHook, product_id]);
 
   useEffect(() => {
     if (!isCheckAdd && !isCheckDelete && !isCheckUpdate) return;

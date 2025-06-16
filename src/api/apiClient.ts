@@ -13,8 +13,8 @@ export const getData = async <T>(
       params: {
         ...otherParams,
         s_global: keyword,
-        start_at: startAt,
-        end_at: endAt,
+        start_date: startAt,
+        end_date: endAt,
       },
     });
     return response.data;

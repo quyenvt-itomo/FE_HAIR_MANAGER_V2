@@ -24,7 +24,7 @@ const ProductSelect: React.FC<SelectProps<ProductData>> = ({
   const { productData, loading, pagination } = useProductData({
     keyword,
     page,
-    limit: 20,
+    size: 20,
     isLockHook,
   });
 

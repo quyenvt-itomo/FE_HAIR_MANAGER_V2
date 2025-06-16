@@ -12,7 +12,7 @@ export interface WarehouseData {
   code: string;
 
   phase_id?: number;
-  phase_data: PhaseData;
+  phase: PhaseData;
 
   phone_number: string;
   address: string;

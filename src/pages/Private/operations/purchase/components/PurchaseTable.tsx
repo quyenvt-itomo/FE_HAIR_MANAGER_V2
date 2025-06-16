@@ -17,20 +17,10 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
   onApprove,
   ...rest
 }) => {
-  const [data, setData] = useState<any[]>([]);
-
   const { permissions } = useSelector(
     (state: RootState) => state.Client,
     shallowEqual
   );
-
-  useEffect(() => {
-    const updateData = dataSource.map((item: any) => ({
-      ...item,
-      details: item.purchase_detail_data,
-    }));
-    setData(updateData);
-  }, [dataSource]);
 
   const columns: any[] = [
     {
@@ -49,14 +39,14 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Nhà cung cấp",
-      dataIndex: ["supplier_data", "name"],
-      key: "supplier_data",
+      dataIndex: ["supplier", "name"],
+      key: "supplier",
       width: 270,
     },
     {
       title: "Khối lượng",
-      dataIndex: "total_quantity",
-      key: "total_quantity",
+      dataIndex: "quantity",
+      key: "quantity",
       width: 120,
       align: "right",
       render: (value: number) => formatWeight(value),
@@ -64,18 +54,28 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
     hasAnyRequiredPermission(permissions, [
       PermissionMap.PURCHASES.VIEW_PURCHASE_PRICE,
     ]) && {
-      title: "Tổng số tiền",
-      dataIndex: "total_money",
-      key: "total_money",
+      title: "Đơn giá",
+      dataIndex: "price",
+      key: "price",
       width: 150,
       align: "right",
-      render: (value: number) => formatMoney(value), // Thêm ký hiệu tiền Việt Nam (₫)
+      render: (value: number) => formatMoney(value),
+    },
+    hasAnyRequiredPermission(permissions, [
+      PermissionMap.PURCHASES.VIEW_PURCHASE_PRICE,
+    ]) && {
+      title: "Thành tiền",
+      dataIndex: "money",
+      key: "money",
+      width: 150,
+      align: "right",
+      render: (value: number) => formatMoney(value),
     },
     {
       title: "Người mua hàng",
-      dataIndex: "employee_purchased_data",
-      key: "employee_purchased_data",
-      render: (value: any) => value?.full_name,
+      dataIndex: "employee_purchased",
+      key: "employee_purchased",
+      render: (value: any) => value?.name,
       width: 270,
     },
     {
@@ -90,77 +90,10 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
     },
   ].filter(Boolean);
 
-  const detailTableColumns: any = [
-    {
-      title: "Mã hàng",
-      dataIndex: ["product_data", "code"],
-      key: "code",
-      width: 200,
-    },
-    {
-      title: "Tên hàng",
-      dataIndex: ["product_data", "name"],
-      key: "name",
-      width: 300,
-    },
-    {
-      title: "Khối lượng",
-      dataIndex: "quantity",
-      key: "quantity",
-      align: "right",
-      width: 120,
-      render: (value: number) => formatWeight(value),
-    },
-    hasAnyRequiredPermission(permissions, [
-      PermissionMap.PURCHASES.VIEW_PURCHASE_PRICE,
-    ]) && {
-      title: "Đơn giá",
-      dataIndex: "price",
-      key: "price",
-      className: "text-right",
-      align: "right",
-      width: 150,
-      render: (value: number) => formatMoney(value),
-    },
-    hasAnyRequiredPermission(permissions, [
-      PermissionMap.PURCHASES.VIEW_PURCHASE_PRICE,
-    ]) && {
-      title: "Thành tiền",
-      dataIndex: "money",
-      key: "money",
-      align: "right",
-      width: 150,
-      render: (value: number) => formatMoney(value),
-    },
-    {
-      title: "Màu sắc",
-      dataIndex: ["product_data", "hair_color"],
-      key: "hair_color_data",
-      width: 130,
-    },
-    {
-      title: "Kích thước (cm)",
-      dataIndex: ["product_data", "length_data", "name"],
-      key: "length_data",
-      width: 150,
-    },
-    {
-      title: "Ghi chú",
-      dataIndex: "description",
-      key: "description",
-      render: (text: string) => (
-        <Tooltip title={text}>
-          <span className="ellipsis-cell w-full ">{text}</span>
-        </Tooltip>
-      ),
-    },
-  ].filter(Boolean);
-
   return (
     <TableColumnConfig
       columns={columns}
-      detailTableColumns={detailTableColumns}
-      dataSource={data}
+      dataSource={dataSource}
       itemName={"phiếu"}
       tableKey="purchase"
       {...rest}

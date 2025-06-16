@@ -58,7 +58,7 @@ const AddUpdateProductPage: React.FC = () => {
   const [editData, setEditData] = useState<ProductData | null>(null);
   const [showNotFound, setShowNotFound] = useState<boolean>(false);
 
-  const lengthCm: LengthData | undefined = Form.useWatch("length_data", form);
+  const lengthCm: LengthData | undefined = Form.useWatch("length", form);
 
   const { horizontal } = useSelector(
     (state: RootState) => state.Client,
@@ -95,14 +95,14 @@ const AddUpdateProductPage: React.FC = () => {
 
     form.setFieldsValue({
       ...editData,
-      category_id: editData.category_data?.id,
-      type_id: editData.type_data?.id,
-      unit_id: editData.unit_data?.id,
-      warehouse_default_id: editData.warehouse_data?.id,
-      length_id: editData.length_data?.id,
-      hair_tone_id: editData.hair_tone_data?.id,
-      hair_quality_id: editData.hair_quality_data?.id,
-      hair_type_id: editData.hair_type_data?.id,
+      category_id: editData.category?.id,
+      type_id: editData.type?.id,
+      unit_id: editData.unit?.id,
+      warehouse_default_id: editData.warehouse?.id,
+      length_id: editData.length?.id,
+      hair_tone_id: editData.hair_tone?.id,
+      hair_quality_id: editData.hair_quality?.id,
+      hair_type_id: editData.hair_type?.id,
     });
     setFileList(mapFileList(editData.pictures));
   }, [editData, form]);
@@ -308,7 +308,7 @@ const AddUpdateProductPage: React.FC = () => {
                 <FloatLabel label="Kho mặc định">
                   <WarehouseSelect
                     placeholder=""
-                    defaultData={editData?.warehouse_data}
+                    defaultData={editData?.warehouse}
                   />
                 </FloatLabel>
               </Form.Item>
@@ -335,12 +335,12 @@ const AddUpdateProductPage: React.FC = () => {
                   <LengthSelect
                     placeholder=""
                     onChangeData={(value) => {
-                      form.setFieldsValue({ length_data: value });
+                      form.setFieldsValue({ length: value });
                     }}
                   />
                 </FloatLabel>
               </Form.Item>
-              <Form.Item name="length_data" hidden />
+              <Form.Item name="length" hidden />
             </Col>
             <Col span={12}>
               <Form.Item name="length_inch">

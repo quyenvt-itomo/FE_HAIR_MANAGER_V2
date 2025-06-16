@@ -22,7 +22,7 @@ const EmployeeSelect: React.FC<MultipleSelectProps<EmployeeData>> = ({
 
   const { employeeData, loading, pagination } = useEmployeeData({
     page,
-    limit: 20,
+    size: 20,
     keyword,
     isLockHook,
   });
@@ -69,7 +69,7 @@ const EmployeeSelect: React.FC<MultipleSelectProps<EmployeeData>> = ({
   };
 
   const columns: DropdownColumn<EmployeeData>[] = [
-    { label: "Tên nhân sự", dataIndex: "full_name", className: "w-2/3" },
+    { label: "Tên nhân sự", dataIndex: "name", className: "w-2/3" },
     { label: "Mã nhân sự", dataIndex: "code", className: "w-1/3" },
   ];
 

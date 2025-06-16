@@ -488,6 +488,16 @@ tr:hover > td .an-tag:first-child {
 
 .ant-table-wrapper .ant-table-expanded-row-fixed {
   margin: 0px -16px !important;
+  padding: 12px !important;
+}
+
+.ant-table-wrapper .ant-table-expanded-row-fixed > .ant-table-wrapper,
+.ant-table-wrapper .ant-table-expanded-row-fixed > .ant-table-wrapper .ant-table {
+  margin: 0 !important;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  background-color: #f0f2f5 !important;
 }
 
 .ant-table-cell .ant-table-wrapper .ant-table-thead > tr > th,

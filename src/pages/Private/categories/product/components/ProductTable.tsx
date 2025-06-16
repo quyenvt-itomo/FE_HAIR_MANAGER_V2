@@ -26,14 +26,14 @@ const ProductTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Nhóm hàng",
-      dataIndex: ["category_data", "name"],
-      key: "category_data",
+      dataIndex: ["category", "name"],
+      key: "category",
       width: 150,
     },
     {
       title: "Đơn vị",
-      dataIndex: ["unit_data", "name"],
-      key: "unit_data",
+      dataIndex: ["unit", "name"],
+      key: "unit",
       width: 100,
       align: "center",
     },
@@ -53,8 +53,8 @@ const ProductTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Kho mặc định",
-      dataIndex: ["warehouse_data", "name"],
-      key: "warehouse_data",
+      dataIndex: ["warehouse", "name"],
+      key: "warehouse",
       width: 350,
     },
     {
@@ -67,7 +67,7 @@ const ProductTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Độ dài (inch)",
-      dataIndex: ["length_data", "length_inch"],
+      dataIndex: ["length", "length_inch"],
       key: "length_inch",
       width: 120,
       align: "right",
@@ -75,7 +75,7 @@ const ProductTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Độ dài (cm)",
-      dataIndex: ["length_data", "length_cm"],
+      dataIndex: ["length", "length_cm"],
       key: "length_cm",
       width: 120,
       align: "right",
@@ -135,8 +135,8 @@ const ProductTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Tông tóc",
-      dataIndex: ["hair_tone_data", "name"],
-      key: "hair_tone_data",
+      dataIndex: ["hair_tone", "name"],
+      key: "hair_tone",
       width: 120,
     },
     {
@@ -147,8 +147,8 @@ const ProductTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Chất tóc",
-      dataIndex: ["hair_quality_data", "name"],
-      key: "hair_quality_data",
+      dataIndex: ["hair_quality", "name"],
+      key: "hair_quality",
       width: 120,
     },
     {
@@ -167,8 +167,8 @@ const ProductTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Kiểu tóc",
-      dataIndex: ["hair_type_data", "name"],
-      key: "hair_type_data",
+      dataIndex: ["hair_type", "name"],
+      key: "hair_type",
       width: 120,
     },
     {

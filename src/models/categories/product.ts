@@ -33,28 +33,28 @@ export interface ProductData {
   description: string;
 
   category_id?: number;
-  category_data?: CategoryData;
+  category?: CategoryData;
 
   type_id?: number;
-  type_data?: ProductTypeData;
+  type?: ProductTypeData;
 
   unit_id?: number;
-  unit_data?: UnitData;
+  unit?: UnitData;
 
   warehouse_default_id?: number;
-  warehouse_data?: WarehouseData;
+  warehouse?: WarehouseData;
 
   hair_tone_id?: number;
-  hair_tone_data?: HairToneData;
+  hair_tone?: HairToneData;
 
   hair_quality_id?: number;
-  hair_quality_data?: HairQualityData;
+  hair_quality?: HairQualityData;
 
   hair_type_id?: number;
-  hair_type_data?: HairTypeData;
+  hair_type?: HairTypeData;
 
   length_id?: number;
-  length_data?: LengthData;
+  length?: LengthData;
 
   length_cm?: number;
   length_inch?: number;

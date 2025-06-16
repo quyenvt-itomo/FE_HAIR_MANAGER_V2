@@ -16,7 +16,7 @@ import { UseDataParams } from "../../models/base/hook_model";
 export const useCustomerData = ({
   keyword,
   page,
-  limit,
+  size,
   sortBy,
   sortType,
   onCloseModal,
@@ -42,7 +42,7 @@ export const useCustomerData = ({
     dispatch(
       getAll({
         page,
-        limit,
+        size,
         keyword,
       })
     );
@@ -66,7 +66,7 @@ export const useCustomerData = ({
 
   useEffect(() => {
     fetchCustomerData();
-  }, [dispatch, page, limit, keyword, sortBy, sortType, isLockHook]);
+  }, [dispatch, page, size, keyword, sortBy, sortType, isLockHook]);
 
   useEffect(() => {
     if (!isCheckAdd && !isCheckDelete && !isCheckUpdate) return;

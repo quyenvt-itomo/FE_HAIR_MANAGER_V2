@@ -30,7 +30,7 @@ const SupplierSelect: React.FC<SelectProps<SupplierData>> = ({
   const { supplierData, loading, pagination, addSupplier } = useSupplierData({
     keyword,
     page,
-    limit: 20,
+    size: 20,
     isLockHook,
   });
 

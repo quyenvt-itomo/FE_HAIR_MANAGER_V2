@@ -44,12 +44,12 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
         ...editData,
         is_leader: editData.role === "LEADER",
         is_warehouse_manager: editData.role === "WAREHOUSE_MANAGER",
-        permission_group_ids: editData.permission_group_data?.map(
+        permission_group_ids: editData.permission_group?.map(
           (dev: any) => dev.id
         ),
         password:
           !!editData && (editData.access || editData.active) ? "******" : "",
-        leader_of_team: editData.leader_of_team_data?.map((dev) => dev.id),
+        leader_of_team: editData.leader_of_team?.map((dev) => dev.id),
       });
 
       setFileList(mapFileList(editData.avatar ? [editData.avatar] : []));
@@ -143,7 +143,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
             </FloatLabel>
           </Form.Item>
           <Form.Item
-            name="full_name"
+            name="name"
             className="col-span-2"
             rules={[
               {
@@ -272,7 +272,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
                 <FloatLabel label="Công đoạn" required>
                   <PhaseSelect
                     placeholder=""
-                    defaultData={editData?.leader_of_team_data}
+                    defaultData={editData?.leader_of_team}
                   />
                 </FloatLabel>
               </Form.Item>
@@ -356,7 +356,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
                       <FloatLabel label="Công đoạn" required>
                         <PermissionGroupSelect
                           placeholder=""
-                          defaultData={editData?.permission_group_data}
+                          defaultData={editData?.permission_group}
                         />
                       </FloatLabel>
                     </Form.Item>

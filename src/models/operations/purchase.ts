@@ -18,10 +18,10 @@ export interface PurchaseDetailData {
   price: number;
   discount: number;
   vat: number;
-  product_data: ProductData;
-  hair_color_data: AttributeData;
-  unit_data: UnitData;
-  warehouse_data: WarehouseData;
+  product: ProductData;
+  hair_color: AttributeData;
+  unit: UnitData;
+  warehouse: WarehouseData;
   description?: string;
 }
 
@@ -35,13 +35,13 @@ export interface PurchaseData {
   total_price: number;
 
   supplier_id?: number;
-  supplier_data?: SupplierData;
+  supplier?: SupplierData;
 
   employee_purchase_id?: number;
-  employee_purchased_data?: EmployeeData;
+  employee_purchased?: EmployeeData;
 
   // TODO: to Add
-  purchase_detail_data: PurchaseDetailData[];
+  purchase_detail: PurchaseDetailData[];
 
   // TODO: to Update
   purchase_detail_create: PurchaseDetailData[];

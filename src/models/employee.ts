@@ -12,21 +12,21 @@ export interface EmployeeData {
   id: number;
   code?: string;
   avatar?: string;
-  full_name: string;
+  name: string;
   phone_number: string;
   address?: string;
   username: string;
   email: string;
   role: string | null;
-  permission_data: PermissionData[];
+  permission: PermissionData[];
 
   status: boolean;
 
   permission_group_ids?: number[];
-  permission_group_data: PermissionGroupData[];
+  permission_group: PermissionGroupData[];
 
   leader_of_team?: number[];
-  leader_of_team_data?: any[];
+  leader_of_team?: any[];
 
   access: boolean;
   active: boolean;

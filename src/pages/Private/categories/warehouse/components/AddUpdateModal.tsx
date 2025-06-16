@@ -27,7 +27,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<WarehouseData>> = ({
     if (editData) {
       form.setFieldsValue({
         ...editData,
-        phase_id: editData.phase_data?.id,
+        phase_id: editData.phase?.id,
       });
     }
   }, [editData, form, open]);
@@ -127,7 +127,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<WarehouseData>> = ({
           <Col span={24}>
             <Form.Item name="phase_id">
               <FloatLabel label="Pha">
-                <PhaseSelect placeholder="" defaultData={editData?.phase_data} />
+                <PhaseSelect placeholder="" defaultData={editData?.phase} />
               </FloatLabel>
             </Form.Item>
           </Col>

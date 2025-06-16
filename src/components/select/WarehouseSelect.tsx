@@ -29,7 +29,7 @@ const WarehouseSelect: React.FC<WarehouseSelectProps> = ({
   const { warehouseData, loading, pagination } = useWarehouseData({
     keyword,
     page,
-    limit: 20,
+    size: 20,
     isLockHook,
     product_id,
   });

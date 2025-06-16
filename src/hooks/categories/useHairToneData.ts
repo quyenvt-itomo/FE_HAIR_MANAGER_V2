@@ -16,7 +16,7 @@ import { UseDataParams } from "../../models/base/hook_model";
 export const useHairToneData = ({
   keyword,
   page,
-  limit,
+  size,
   sortBy,
   sortType,
   onCloseModal,
@@ -42,7 +42,7 @@ export const useHairToneData = ({
     dispatch(
       getAll({
         page,
-        limit,
+        size,
         keyword,
         type: "HAIR_TONE",
       })
@@ -69,7 +69,7 @@ export const useHairToneData = ({
 
   useEffect(() => {
     fetchHairToneData();
-  }, [dispatch, page, limit, keyword, sortBy, sortType, isLockHook]);
+  }, [dispatch, page, size, keyword, sortBy, sortType, isLockHook]);
 
   useEffect(() => {
     if (!isCheckAdd && !isCheckDelete && !isCheckUpdate) return;

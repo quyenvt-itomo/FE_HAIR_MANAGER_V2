@@ -20,7 +20,7 @@ interface UsePhaseDataParams extends UseDataParams {
 export const usePhaseData = ({
   keyword,
   page,
-  limit,
+  size,
   sortBy,
   sortType,
   onCloseModal,
@@ -47,7 +47,7 @@ export const usePhaseData = ({
     dispatch(
       getAll({
         page,
-        limit,
+        size,
         keyword,
         get_for_me,
       })
@@ -75,7 +75,7 @@ export const usePhaseData = ({
   }, [
     dispatch,
     page,
-    limit,
+    size,
     keyword,
     sortBy,
     sortType,

@@ -34,7 +34,9 @@ const App: React.FC = () => {
   useEffect(() => {
     const storedValue = localStorage.getItem("horizontalLayout");
     dispatch(setHorizontal(storedValue ? JSON.parse(storedValue) : true));
-    dispatch(getDataInfo());
+    const loginData =
+      localStorage.getItem("loginData") || sessionStorage.getItem("loginData");
+    if (loginData) dispatch(getDataInfo());
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };

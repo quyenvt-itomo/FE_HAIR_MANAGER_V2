@@ -65,7 +65,7 @@ function* changePasswordSaga(): SagaIterator {
 function* updateDataSaga(action: PayloadAction<UserInfo>): SagaIterator {
   try {
     const response = yield call(() =>
-      putData(`${apiEndpoint.auth.update_data_info}`, action.payload)
+      putData(`${apiEndpoint.auth.update_info}`, action.payload)
     );
     yield put(updateDataInfoSuccess(response.data));
   } catch (error: any) {

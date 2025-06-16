@@ -22,7 +22,7 @@ const ProductSelect: React.FC<MultipleSelectProps<ProductData>> = ({
 
   const { productData, loading, pagination } = useProductData({
     page,
-    limit: 20,
+    size: 20,
     keyword,
     isLockHook,
   });

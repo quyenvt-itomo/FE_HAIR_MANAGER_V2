@@ -22,7 +22,7 @@ const SupplierSelect: React.FC<MultipleSelectProps<SupplierData>> = ({
 
   const { supplierData, loading, pagination } = useSupplierData({
     page,
-    limit: 20,
+    size: 20,
     keyword,
     isLockHook,
   });

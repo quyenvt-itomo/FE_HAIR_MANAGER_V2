@@ -23,8 +23,8 @@ const WarehouseTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Pha",
-      dataIndex: ["phase_data", "name"],
-      key: "phase_data",
+      dataIndex: ["phase", "name"],
+      key: "phase",
       width: 250,
     },
     {

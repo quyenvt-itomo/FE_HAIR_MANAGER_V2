@@ -17,7 +17,7 @@ import { transformFilters } from "../../utils/filterUtils";
 export const usePurchaseData = ({
   keyword,
   page,
-  limit,
+  size,
   sortBy,
   sortType,
   filters,
@@ -47,7 +47,7 @@ export const usePurchaseData = ({
     dispatch(
       getAll({
         page,
-        limit,
+        size,
         keyword,
         startAt,
         endAt,
@@ -75,7 +75,7 @@ export const usePurchaseData = ({
 
   useEffect(() => {
     fetchPurchaseData();
-  }, [dispatch, page, limit, keyword, sortBy, sortType, isLockHook, filters, startAt, endAt]);
+  }, [dispatch, page, size, keyword, sortBy, sortType, isLockHook, filters, startAt, endAt]);
 
   useEffect(() => {
     if (!isCheckAdd && !isCheckDelete && !isCheckUpdate) return;

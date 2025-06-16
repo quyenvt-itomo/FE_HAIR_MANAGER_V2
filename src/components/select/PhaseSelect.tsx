@@ -28,7 +28,7 @@ const PhaseSelect: React.FC<PhaseSelectProps> = ({
   const { phaseData, loading, pagination } = usePhaseData({
     keyword,
     page,
-    limit: 20,
+    size: 20,
     isLockHook,
     get_for_me,
   });

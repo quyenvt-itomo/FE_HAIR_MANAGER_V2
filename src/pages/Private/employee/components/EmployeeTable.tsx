@@ -18,17 +18,17 @@ const EmployeeTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: <HeaderTooltip title="Tên nhân sự" />,
-      dataIndex: "full_name",
-      key: "full_name",
+      dataIndex: "name",
+      key: "name",
       width: 250,
-      render: (full_name: string, record: EmployeeData) => (
+      render: (name: string, record: EmployeeData) => (
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-full overflow-hidden grid place-items-center">
             <UserImage src={record.avatar} height={30} width={30} />
           </div>
           <div className="flex flex-col">
-            <Tooltip title={full_name} className="w-40 truncate">
-              {full_name}
+            <Tooltip title={name} className="w-40 truncate">
+              {name}
             </Tooltip>
           </div>
         </div>
@@ -49,8 +49,8 @@ const EmployeeTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Quyền trong hệ thống",
-      dataIndex: "permission_group_data",
-      key: "permission_group_data",
+      dataIndex: "permission_group",
+      key: "permission_group",
       render: (value: any) =>
         value && Array.isArray(value) ? (
           <div className="flex flex-wrap gap-2">
@@ -74,8 +74,8 @@ const EmployeeTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Tổ quản lý",
-      dataIndex: "leader_of_team_data",
-      key: "leader_of_team_data",
+      dataIndex: "leader_of_team",
+      key: "leader_of_team",
       render: (value: any) =>
         value && Array.isArray(value) ? (
           <div className="flex flex-wrap gap-2">

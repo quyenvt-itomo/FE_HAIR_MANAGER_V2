@@ -98,7 +98,7 @@ const FilterPopover: React.FC<FilterPopoverProps> = ({
             (item) =>
               ({
                 id: item.value,
-                full_name: item.text,
+                name: item.text,
               } as EmployeeData)
           )}
           onFocus={() => setFocusedFilter("employee")}
@@ -210,6 +210,7 @@ const FilterPopover: React.FC<FilterPopoverProps> = ({
     );
     setFilterActive(isActive);
     onFilterChange(selectedFilters);
+    handleClose();
   };
 
   const handleSelectChange = (key: FilterType, values: any[]) => {
@@ -218,7 +219,7 @@ const FilterPopover: React.FC<FilterPopoverProps> = ({
       text: string;
     }[] = values.map((val) => ({
       value: val.id,
-      text: val.name || val.full_name || val.code,
+      text: val.name || val.name || val.code,
     }));
 
     setSelectedFilters((prev) => ({
@@ -232,6 +233,7 @@ const FilterPopover: React.FC<FilterPopoverProps> = ({
     setSelectedFilters(emptyFilterState);
     setFilterActive(false);
     onFilterChange(emptyFilterState);
+    handleClose();
   };
 
   useEffect(() => {

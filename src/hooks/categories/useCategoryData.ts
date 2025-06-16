@@ -16,7 +16,7 @@ import { UseDataParams } from "../../models/base/hook_model";
 export const useCategoryData = ({
   keyword,
   page,
-  limit,
+  size,
   sortBy,
   sortType,
   onCloseModal,
@@ -42,7 +42,7 @@ export const useCategoryData = ({
     dispatch(
       getAll({
         page,
-        limit,
+        size,
         keyword,
         type: "CATEGORY",
       })
@@ -69,7 +69,7 @@ export const useCategoryData = ({
 
   useEffect(() => {
     fetchCategoryData();
-  }, [dispatch, page, limit, keyword, sortBy, sortType, isLockHook]);
+  }, [dispatch, page, size, keyword, sortBy, sortType, isLockHook]);
 
   useEffect(() => {
     if (!isCheckAdd && !isCheckDelete && !isCheckUpdate) return;

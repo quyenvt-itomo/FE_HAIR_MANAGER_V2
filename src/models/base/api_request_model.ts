@@ -2,7 +2,7 @@ export interface ApiRequestQuery {
   startAt?: string;
   endAt?: string;
   page?: number;
-  limit?: number;
+  size?: number;
   keyword?: string;
   type?: string;
   sortBy?: string;
