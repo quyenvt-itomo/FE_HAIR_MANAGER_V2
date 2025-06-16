@@ -1,0 +1,72 @@
+.float-label {
+  position: relative;
+  width: 100%;
+}
+
+.float-label .ant-input,
+.float-label .ant-input-number-input,
+.float-label .ant-picker,
+.float-label .ant-input-textarea,
+.float-label .ant-select,
+.float-label .ant-select-selector {
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.float-label .ant-select-selector {
+  display: flex;
+  align-items: center;
+}
+
+.float-label .label {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  padding: 0px;
+  background-color: transparent;
+  color: #999;
+  padding: 0 6px;
+}
+
+.float-label .label .label-line::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 16px;
+  height: 1px;
+  width: 100%;
+  transition: all 0.2s ease;
+  z-index: -1;
+}
+
+.float-label .as-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.float-label .as-label {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.float-label .as-label .label-line::before {
+  background-color: #fff;
+}
+
+.float-label.active .label,
+.float-label:focus-within .label {
+  top: -5px;
+  transform: translateY(-50%) scale(0.95);
+  z-index: 1;
+}
+
+.float-label .ant-select-selection-item,
+.float-label .ant-select-selection-placeholder {
+  display: flex;
+  align-items: center;
+}
+
+.float-label.inactive .label {
+  display: none;
+}

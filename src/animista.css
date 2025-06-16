@@ -1,0 +1,171 @@
+.slide-right {
+  -webkit-animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: var(--delay, 0s); /* Độ trễ mặc định */
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(calc(-1 * var(--slide-distance, 30px)));
+    transform: translateX(calc(-1 * var(--slide-distance, 30px)));
+    opacity: 0; /* Bắt đầu với độ mờ */
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1; /* Kết thúc với độ rõ ràng */
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(calc(-1 * var(--slide-distance, 30px)));
+    transform: translateX(calc(-1 * var(--slide-distance, 30px)));
+    opacity: 0; /* Bắt đầu với độ mờ */
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1; /* Kết thúc với độ rõ ràng */
+  }
+}
+
+.slide-left {
+  -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: var(--delay, 0s); /* Độ trễ mặc định */
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(
+      var(--slide-distance, 30px)
+    ); /* Di chuyển từ phải sang trái */
+    transform: translateX(var(--slide-distance, 30px));
+    opacity: 0; /* Bắt đầu với độ mờ */
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1; /* Kết thúc với độ rõ ràng */
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(
+      var(--slide-distance, 30px)
+    ); /* Di chuyển từ phải sang trái */
+    transform: translateX(var(--slide-distance, 30px));
+    opacity: 0; /* Bắt đầu với độ mờ */
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1; /* Kết thúc với độ rõ ràng */
+  }
+}
+
+.slide-top {
+  -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: var(--delay, 0s); /* Độ trễ mặc định */
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(
+      var(--slide-distance, 30px)
+    ); /* Di chuyển từ phải sang trái */
+    transform: translateY(var(--slide-distance, 30px));
+    opacity: 0; /* Bắt đầu với độ mờ */
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1; /* Kết thúc với độ rõ ràng */
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(
+      var(--slide-distance, 30px)
+    ); /* Di chuyển từ phải sang trái */
+    transform: translateY(var(--slide-distance, 30px));
+    opacity: 0; /* Bắt đầu với độ mờ */
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1; /* Kết thúc với độ rõ ràng */
+  }
+}
+
+.scale-up-ver-top {
+  -webkit-animation: scale-up-ver-top 0.1s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-ver-top 0.1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation-delay: var(--delay, 0s);
+}
+
+@-webkit-keyframes scale-up-ver-top {
+  0% {
+    -webkit-transform: scaleY(var(--scale, 0.4));
+    transform: scaleY(var(--scale, 0.4));
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+  }
+}
+@keyframes scale-up-ver-top {
+  0% {
+    -webkit-transform: scaleY(var(--scale, 0.4));
+    transform: scaleY(var(--scale, 0.4));
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+  }
+}
+
+.zoom-element {
+  transition: all 0.3s ease-in-out !important; /* Hiệu ứng mượt khi thay đổi */
+}
+
+.zoom-element:hover > *,
+.zoom-element.selected > * {
+  transform: scale(1.02);
+}
+
+@keyframes outstanding_red {
+  0% {
+    background-color: #faf3f3; /* Màu đỏ nhạt */
+  }
+  25% {
+    background-color: #ffeded; /* Màu đỏ sáng hơn */
+  }
+  50% {
+    background-color: #faf3f3; /* Màu đỏ nhạt */
+  }
+  75% {
+    background-color: #ffeded; /* Màu đỏ sáng hơn */
+  }
+  100% {
+    background-color: #fffefe; /* Màu đỏ nhạt */
+  }
+}
+
+tbody.ant-table-tbody tr.highlight-row > td.ant-table-cell {
+  transition: all 0.3s ease-in-out;
+  animation: outstanding_red 2s infinite !important;
+}

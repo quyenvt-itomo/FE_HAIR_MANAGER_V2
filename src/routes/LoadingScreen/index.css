@@ -1,0 +1,49 @@
+.full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  overflow: hidden;
+  transition: all 0.9s ease-in-out;
+}
+
+.top__full-screen,
+.bot__full-screen {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  transition: transform 0.9s ease-in-out;
+}
+
+.logo img {
+  width: 120px;
+}
+
+.process-bar {
+  width: 70vw;
+  height: 24px;
+  background: #D7DCE2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.process-bar__fill {
+  height: 100%;
+  background: #006EC4;
+  transition: width 1.6s ease-in-out;
+}
+
+/* Khi loading hoàn tất, top đi lên, bot đi xuống */
+.full-screen.hide .top__full-screen {
+  transform: translateY(-100%);
+}
+
+.full-screen.hide .bot__full-screen {
+  transform: translateY(100%);
+}
