@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, shallowEqual, useDispatch } from "react-redux";
 import { RootState } from "../stores";
-import LoadingScreen from "./LoadingScreen";
 import { setIsCheckUnAuthor } from "../stores/auth/slice";
 import { message } from "antd";
-import { AUTH_MESSAGES } from "../constants/message/auth";
 
 type AuthMiddlewareProps = {
     children: React.ReactNode;
@@ -55,12 +53,6 @@ const AuthMiddleware: React.FC<AuthMiddlewareProps> = ({ children }) => {
 
         checkAccess();
     }, [pathname, loginData, isCheckUnAuthor, navigate]);
-
-    if (isLoading) {
-        return (
-            <LoadingScreen isActive={hideLoadingScreen} onFinish={() => {}} />
-        );
-    }
 
     return <>{children}</>;
 };
