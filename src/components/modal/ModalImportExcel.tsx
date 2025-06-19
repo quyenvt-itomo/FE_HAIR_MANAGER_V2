@@ -38,6 +38,8 @@ const ModalImportExcel: React.FC<ModalAddProps> = ({
   useEffect(() => {
     if (!open) {
       setFile(null);
+
+      form.resetFields();
     }
   }, [open]);
 

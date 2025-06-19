@@ -16,13 +16,18 @@ export const showImportResultModal = (result: ImportExcelResult) => {
           Số dòng thành công: <b>{success}</b>
         </p>
         {url && (
-          <Button
-            type="link"
-            onClick={() => downloadFile(url)}
-            style={{ padding: 0 }}
-          >
-            Tải file lỗi
-          </Button>
+          <p >
+            Số dòng lỗi: <b
+              className="text-red-600">{total - success}</b>{" "}
+            <Button
+              type="link"
+              className="text-red-600"
+              onClick={() => downloadFile(url)}
+              style={{ padding: 0 }}
+            >
+              Tải file lỗi
+            </Button>
+          </p>
         )}
       </div>
     ),
