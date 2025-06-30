@@ -4,7 +4,7 @@ import TableColumnConfig, {
 } from "../../../../../components/table/TableColumnConfig";
 import { HOST_URL } from "../../../../../constants/ApiEndpoint";
 import formatMoney from "../../../../../utils/formatMoney";
-import { formatWeight } from "../../../../../utils/formatWeight";
+import formatWeight from "../../../../../utils/formatWeight";
 import { formatDateDDMMYYYY } from "../../../../../utils/dateUtils";
 import { hasAnyRequiredPermission } from "../../../../../utils/permissionUtils";
 import { shallowEqual, useSelector } from "react-redux";

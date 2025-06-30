@@ -13,16 +13,11 @@ export interface PurchaseQuery extends ApiRequestQuery {
 
 export interface PurchaseDetailData {
   id: number;
-  size: number;
+  code: string;
+  productName: string;
   quantity: number;
   price: number;
-  discount: number;
-  vat: number;
-  product: ProductData;
-  hairColor: AttributeData;
-  unit: UnitData;
-  warehouse: WarehouseData;
-  description?: string;
+  note?: string;
 }
 
 export interface PurchaseData {
@@ -39,6 +34,8 @@ export interface PurchaseData {
 
   employeeId?: number;
   employee?: EmployeeData;
+
+  files: string[];
 
   // TODO: to Add
   details: PurchaseDetailData[];

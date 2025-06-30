@@ -1,9 +1,10 @@
 const Label: React.FC<{
   title: string;
   required?: boolean;
-}> = ({ title, required }) => {
+  width?: number;
+}> = ({ title, required, width = 144 }) => {
   return (
-    <span className="w-36 h-9 flex items-center">
+    <span className="h-9 flex items-center" style={{ width }}>
       {title} {required && <span className="required">*</span>}
     </span>
   );

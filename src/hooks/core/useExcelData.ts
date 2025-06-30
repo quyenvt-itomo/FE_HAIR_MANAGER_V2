@@ -1,20 +1,20 @@
 import { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { RootState } from "../stores";
+import { RootState } from "../../stores";
 import {
   exportExcel,
   getTemplate,
   importExcel,
   resetExcel,
-} from "../stores/excel/slice";
+} from "../../stores/excel/slice";
 
-import { downloadFile } from "../utils/downloadFile";
+import { downloadFile } from "../../utils/downloadFile";
 import {
   ExportExcelQuery,
   FileType,
   ImportExcelData,
-} from "../models/base/excel_model";
-import { showImportResultModal } from "../components/modal/ImportResult";
+} from "../../models/base/excel_model";
+import { showImportResultModal } from "../../components/modal/ImportResult";
 
 interface useExcelDataParams extends Omit<ExportExcelQuery, "fileType"> {}
 

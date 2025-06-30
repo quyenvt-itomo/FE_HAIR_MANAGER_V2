@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MultipleSelectProps } from "../../models/base/select_props";
 import { EmployeeData } from "../../models/employee";
-import useDebounce from "../../hooks/useDebounce";
+import useDebounce from "../../hooks/core/useDebounce";
 import { useEmployeeData } from "../../hooks/useEmployeeData";
 import { DropdownColumn } from "../core/CustomSelectLayout";
 import { SmartMultipleSelect } from "../core/SmartMultipleSelect";

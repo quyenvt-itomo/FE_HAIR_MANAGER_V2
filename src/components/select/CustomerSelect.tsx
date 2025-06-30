@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { SelectProps } from "../../models/base/select_props";
 import { CustomerData } from "../../models/categories/customer";
 import { useCustomerData } from "../../hooks/categories/useCustomerData";
-import useDebounce from "../../hooks/useDebounce";
+import useDebounce from "../../hooks/core/useDebounce";
 import { DropdownColumn } from "../core/CustomSelectLayout";
 import { SmartSelect } from "../core/SmartSelect";
 
@@ -40,7 +40,7 @@ const CustomerSelect: React.FC<SelectProps<CustomerData>> = ({
   }, [customerData]);
 
   useEffect(() => {
-    if (!defaultData) return;
+    if (!defaultData?.id) return;
 
     const exists = listCustomer.some((item) => item.id === defaultData.id);
     if (exists) return;

@@ -27,12 +27,6 @@ export interface LogoutRequest {
   password: string;
 }
 export interface UserInfo extends EmployeeData {
-  id: number;
-  code: string;
-  username: string;
-
-  email: string;
-
   permissions?: { name: string; check: boolean }[];
 
   isFirstLoggin: boolean;

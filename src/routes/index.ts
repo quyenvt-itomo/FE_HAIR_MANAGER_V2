@@ -20,41 +20,56 @@ import AddUpdateProductPage from "../pages/Private/categories/product/AddUpdateP
 import PhasePage from "../pages/Private/operations/phase/Page";
 import WarehousePage from "../pages/Private/categories/warehouse/Page";
 import PurchasePage from "../pages/Private/operations/purchase/Page";
+import AddUpdatePurchasePage from "../pages/Private/operations/purchase/AddUpdatePage";
 
 // Public Routes
 const publicRoutes = [
-    { path: publicRoutesName.login, component: LoginPage },
-    { path: publicRoutesName.error_404, component: NotFoundPage },
-    { path: publicRoutesName.error_network, component: ErrorNetworkPage },
-    { path: publicRoutesName.forgot_password, component: ForgotPasswordPage },
-    { path: publicRoutesName.confirm_email, component: ConfirmEmail },
-    { path: publicRoutesName.new_password, component: NewPassword },
-    { path: publicRoutesName.blank, component: BlankPage },
+  { path: publicRoutesName.login, component: LoginPage },
+  { path: publicRoutesName.error_404, component: NotFoundPage },
+  { path: publicRoutesName.error_network, component: ErrorNetworkPage },
+  { path: publicRoutesName.forgot_password, component: ForgotPasswordPage },
+  { path: publicRoutesName.confirm_email, component: ConfirmEmail },
+  { path: publicRoutesName.new_password, component: NewPassword },
+  { path: publicRoutesName.blank, component: BlankPage },
 ];
 
 // Private Routes
 const privateRoutes = [
-    { path: "/", component: DashboardPage },
+  { path: "/", component: DashboardPage },
 
-    // TODO: Operations
-    {  path: privateRoutesName.operations.production.list, component: PhasePage },
-    // purchase
-    { path: privateRoutesName.operations.purchase.page, component: PurchasePage },
+  // TODO: Operations
+  { path: privateRoutesName.operations.production.list, component: PhasePage },
+  // purchase
+  { path: privateRoutesName.operations.purchase.page, component: PurchasePage },
+  {
+    path: privateRoutesName.operations.purchase.add,
+    component: AddUpdatePurchasePage,
+  },
+  {
+    path: privateRoutesName.operations.purchase.update,
+    component: AddUpdatePurchasePage,
+  },
 
-    // TODO: Categories
-    { path: privateRoutesName.categories.product.page, component: ProductPage },
-    { path: privateRoutesName.categories.product.add, component: AddUpdateProductPage },
-    { path: privateRoutesName.categories.product.update, component: AddUpdateProductPage },
+  // TODO: Categories
+  { path: privateRoutesName.categories.product.page, component: ProductPage },
+  {
+    path: privateRoutesName.categories.product.add,
+    component: AddUpdateProductPage,
+  },
+  {
+    path: privateRoutesName.categories.product.update,
+    component: AddUpdateProductPage,
+  },
 
-    { path: privateRoutesName.categories.warehouse, component: WarehousePage },
+  { path: privateRoutesName.categories.warehouse, component: WarehousePage },
 
-    { path: privateRoutesName.categories.user, component: UserPage },
-    { path: privateRoutesName.categories.customer, component: CustomerPage },
-    { path: privateRoutesName.categories.supplier, component: SupplierPage },
+  { path: privateRoutesName.categories.user, component: UserPage },
+  { path: privateRoutesName.categories.customer, component: CustomerPage },
+  { path: privateRoutesName.categories.supplier, component: SupplierPage },
 
-    // TODO: Employee
-    { path: privateRoutesName.employee.page, component: EmployeePage },
-    { path: privateRoutesName.employee.permission, component: PermissionPage },
+  // TODO: Employee
+  { path: privateRoutesName.employee.page, component: EmployeePage },
+  { path: privateRoutesName.employee.permission, component: PermissionPage },
 ];
 
 export { publicRoutes, privateRoutes };

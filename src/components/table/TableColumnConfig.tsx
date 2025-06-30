@@ -12,7 +12,7 @@ import { CLASSNAME } from "../../constants/UI";
 import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "../../stores";
 import { handleCheckLockAction } from "../../utils/lockActionUtils";
-import { useExcelData } from "../../hooks/useExcelData";
+import { useExcelData } from "../../hooks/core/useExcelData";
 import { getInitialConfigColumns } from "./columnConfig";
 import { resizableComponents } from "./ResizeComponents";
 import { ExportExcelQuery } from "../../models/base/excel_model";

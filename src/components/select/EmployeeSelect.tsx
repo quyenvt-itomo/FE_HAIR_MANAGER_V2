@@ -1,67 +1,61 @@
 import { useEffect, useState } from "react";
 import { SelectProps } from "../../models/base/select_props";
-import { PhaseData } from "../../models/operations/phase";
-import { usePhaseData } from "../../hooks/operations/usePhaseData";
+import { EmployeeData } from "../../models/employee";
+import { useEmployeeData } from "../../hooks/useEmployeeData";
 import useDebounce from "../../hooks/core/useDebounce";
 import { DropdownColumn } from "../core/CustomSelectLayout";
 import { SmartSelect } from "../core/SmartSelect";
 
-interface PhaseSelectProps extends SelectProps<PhaseData> {
-  getForMe?: boolean;
-}
-
-const PhaseSelect: React.FC<PhaseSelectProps> = ({
+const EmployeeSelect: React.FC<SelectProps<EmployeeData>> = ({
   value,
   defaultData,
-  getForMe,
   onChange,
   onChangeData,
   onFocus,
   ...rest
 }) => {
-  const [listPhase, setListPhase] = useState<PhaseData[]>([]);
+  const [listEmployee, setListEmployee] = useState<EmployeeData[]>([]);
   const [isLockHook, setIsLockHook] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
   const [keywordTemp, setKeywordTemp] = useState<string>("");
   const keyword = useDebounce(keywordTemp, 300, setPage);
 
-  const { phaseData, loading, pagination } = usePhaseData({
+  const { employeeData, loading, pagination } = useEmployeeData({
     keyword,
     page,
     size: 20,
     isLockHook,
-    getForMe,
   });
 
   useEffect(() => {
-    if (phaseData.length === 0) return;
+    if (employeeData.length === 0) return;
 
-    setListPhase((prevList) => {
-      const newValues = new Set(phaseData.map((item) => item.id));
+    setListEmployee((prevList) => {
+      const newValues = new Set(employeeData.map((item) => item.id));
       const filteredPrevList = prevList.filter(
         (item) => !newValues.has(item.id)
       );
-      return [...filteredPrevList, ...phaseData];
+      return [...filteredPrevList, ...employeeData];
     });
-  }, [phaseData]);
+  }, [employeeData]);
 
   useEffect(() => {
     if (!defaultData?.id) return;
 
-    const exists = listPhase.some((item) => item.id === defaultData.id);
+    const exists = listEmployee.some((item) => item.id === defaultData.id);
     if (exists) return;
 
-    setListPhase([defaultData, ...listPhase]);
-  }, [defaultData, listPhase]);
+    setListEmployee([defaultData, ...listEmployee]);
+  }, [defaultData, listEmployee]);
 
   useEffect(() => {
-    setListPhase([]);
+    setListEmployee([]);
   }, [keyword]);
 
   const handleScroll = (e: any) => {
     const { scrollTop, scrollHeight, clientHeight } = e.target;
     if (scrollTop + clientHeight >= scrollHeight - 20 && !loading) {
-      if (!pagination || listPhase.length >= pagination.totalRecords)
+      if (!pagination || listEmployee.length >= pagination.totalRecords)
         return;
       setPage((prev) => prev + 1);
     }
@@ -69,22 +63,23 @@ const PhaseSelect: React.FC<PhaseSelectProps> = ({
 
   const handleChange = (id: number) => {
     onChange?.(id);
-    const data = listPhase.find((item) => item.id === id);
+    const data = listEmployee.find((item) => item.id === id);
     onChangeData?.(data);
   };
 
-  const columns: DropdownColumn<PhaseData>[] = [
-    { label: "Pha", dataIndex: "name", className: "w-full" },
+  const columns: DropdownColumn<EmployeeData>[] = [
+    { label: "Tên nhân sự", dataIndex: "name", className: "w-2/3" },
+    { label: "Mã nhân sự", dataIndex: "code", className: "w-1/3" },
   ];
 
   return (
-    <SmartSelect<PhaseData>
-      dataSource={listPhase}
+    <SmartSelect<EmployeeData>
+      dataSource={listEmployee}
       columns={columns}
       value={value}
       onChange={handleChange}
       onPopupScroll={handleScroll}
-      placeholder="Chọn pha"
+      placeholder="Chọn nhân sự"
       loading={loading}
       onSearch={setKeywordTemp}
       onFocus={(e) => {
@@ -96,4 +91,4 @@ const PhaseSelect: React.FC<PhaseSelectProps> = ({
   );
 };
 
-export default PhaseSelect;
+export default EmployeeSelect;

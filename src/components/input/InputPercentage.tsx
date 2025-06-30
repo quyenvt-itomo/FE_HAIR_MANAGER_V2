@@ -1,38 +1,55 @@
 import { InputNumber } from "antd";
 import React from "react";
-import { formatPercentage } from "../../utils/formatPercentage";
+import formatQuantity from "../../utils/formatQuantity";
+import { useClientData } from "../../hooks/core/useClientData";
 
-interface InputPercentageProps {
+interface InputQuantityProps {
   value?: number;
   onChange?: (value: number) => void;
   min?: number;
-  max?: number;
   className?: string;
+  disabled?: boolean;
 }
 
-const InputPercentage: React.FC<InputPercentageProps> = ({
+const InputQuantity: React.FC<InputQuantityProps> = ({
   value,
   onChange,
-  min = 0,
-  max = 100,
-  className = "w-full",
+  min,
+  className,
+  disabled = false,
 }) => {
+  const { format } = useClientData();
   return (
     <InputNumber
       value={value}
       onChange={(val) => onChange?.(val || 0)}
       min={min}
-      max={max}
-      precision={0}
-      formatter={(val) => (val ? formatPercentage(val) : "")}
+      formatter={(val) => formatQuantity(val || 0, format)}
       parser={(val) => {
-        const sanitized = val?.replace(/,/g, "") || "";
-        const parsed = parseFloat(sanitized);
+        if (!val) return 0;
+
+        const { decimalSeparator = ".", thousandSeparator = "," } =
+          format?.numberFormat || {};
+
+        let sanitized = val.replace(
+          new RegExp(`\\${thousandSeparator}`, "g"),
+          ""
+        );
+
+        if (decimalSeparator !== ".") {
+          sanitized = sanitized.replace(
+            new RegExp(`\\${decimalSeparator}`),
+            "."
+          );
+        }
+
+        const parsed = Number(sanitized);
         return isNaN(parsed) ? 0 : parsed;
       }}
-      className={className}
+      className={`w-full h-10 flex items-center ${className}`}
+      disabled={disabled}
     />
   );
 };
 
-export default InputPercentage;
+export default InputQuantity;

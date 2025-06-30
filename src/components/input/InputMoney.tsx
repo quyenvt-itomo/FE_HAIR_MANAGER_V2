@@ -1,6 +1,7 @@
 import { InputNumber } from "antd";
 import React from "react";
 import formatMoney from "../../utils/formatMoney";
+import { useClientData } from "../../hooks/core/useClientData";
 
 interface InputMoneyProps {
   value?: number;
@@ -14,9 +15,10 @@ const InputMoney: React.FC<InputMoneyProps> = ({
   value,
   onChange,
   min = 0,
-  className = "w-full",
+  className,
   disabled = false,
 }) => {
+  const { format } = useClientData();
   return (
     <InputNumber
       value={value}
@@ -24,11 +26,27 @@ const InputMoney: React.FC<InputMoneyProps> = ({
       min={min}
       formatter={(val) => (val ? formatMoney(Number(val)) : "")}
       parser={(val) => {
-        const sanitized = val?.replace(/[^\d]/g, "") || "";
+        if (!val) return 0;
+
+        const { decimalSeparator = ".", thousandSeparator = "," } =
+          format?.numberFormat || {};
+
+        let sanitized = val.replace(
+          new RegExp(`\\${thousandSeparator}`, "g"),
+          ""
+        );
+
+        if (decimalSeparator !== ".") {
+          sanitized = sanitized.replace(
+            new RegExp(`\\${decimalSeparator}`),
+            "."
+          );
+        }
+
         const parsed = Number(sanitized);
         return isNaN(parsed) ? 0 : parsed;
       }}
-      className={className}
+      className={`w-full h-9 flex items-center ${className}`}
       disabled={disabled}
     />
   );

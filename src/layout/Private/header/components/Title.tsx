@@ -7,65 +7,83 @@ import { RootState } from "../../../../stores";
 
 const { Title, Text } = Typography;
 
-const routeKeysMap = {
+type RouteKeyProps = {
+  [key: string]: {
+    path: string;
+    title: string;
+    subTitle: string;
+  };
+};
+
+const routeKeysMap: RouteKeyProps = {
   dashboard: {
     path: privateRoutesName.dashboard,
     title: "Báo cáo",
-    subtitle: "Báo cáo tổng quan",
+    subTitle: "Báo cáo tổng quan",
   },
 
   // TODO: Operations
   phase: {
     path: privateRoutesName.operations.production.list,
     title: "Công đoạn sản xuất",
-    subtitle: "Danh sách công đoạn sản xuất",
+    subTitle: "Danh sách công đoạn sản xuất",
   },
   purchase: {
     path: privateRoutesName.operations.purchase.page,
     title: "Mua hàng",
-    subtitle: "Danh sách phiếu mua hàng",
+    subTitle: "Danh sách phiếu mua hàng",
+  },
+  add_purchase: {
+    path: privateRoutesName.operations.purchase.add,
+    title: "Tạo phiếu mua hàng",
+    subTitle: "Tạo mới phiếu mua hàng",
+  },
+  update_purchase: {
+    path: privateRoutesName.operations.purchase.update,
+    title: "Chỉnh sửa phiếu mua hàng",
+    subTitle: "Chỉnh sửa thông tin phiếu mua hàng",
   },
 
   // TODO: Categories
   product: {
     path: privateRoutesName.categories.product.page,
     title: "Vật tư, hàng hóa",
-    subtitle: "Danh sách vật tư, hàng hóa",
+    subTitle: "Danh sách vật tư, hàng hóa",
   },
   add_product: {
     path: privateRoutesName.categories.product.add,
     title: "Vật tư, hàng hóa",
-    subtitle: "Thêm mới vật tư, hàng hóa",
+    subTitle: "Thêm mới vật tư, hàng hóa",
   },
   update_product: {
     path: privateRoutesName.categories.product.update,
     title: "Vật tư, hàng hóa",
-    subtitle: "Chỉnh sửa thông tin vật tư, hàng hóa",
+    subTitle: "Chỉnh sửa thông tin vật tư, hàng hóa",
   },
 
   warehouse: {
     path: privateRoutesName.categories.warehouse,
     title: "Kho",
-    subtitle: "Danh sách kho",
+    subTitle: "Danh sách kho",
   },
 
   customer: {
     path: privateRoutesName.categories.customer,
     title: "Khách hàng",
-    subtitle: "Danh sách khách hàng",
+    subTitle: "Danh sách khách hàng",
   },
 
   supplier: {
     path: privateRoutesName.categories.supplier,
     title: "Nhà cung cấp",
-    subtitle: "Danh sách nhà cung cấp",
+    subTitle: "Danh sách nhà cung cấp",
   },
 
   // TODO: Employee
   employee: {
     path: privateRoutesName.employee.page,
     title: "Nhân sự",
-    subtitle: "Danh sách nhân sự",
+    subTitle: "Danh sách nhân sự",
   },
 };
 
@@ -119,7 +137,7 @@ const CustomTitle: React.FC = () => {
             marginTop: "4px",
           }}
         >
-          {matchedRoute?.subtitle || ""}
+          {matchedRoute?.subTitle || ""}
         </Text>
       )}
     </div>

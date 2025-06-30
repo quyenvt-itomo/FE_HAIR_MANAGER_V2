@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { SelectProps } from "../../models/base/select_props";
 import { WarehouseData } from "../../models/categories/warehouse";
 import { useWarehouseData } from "../../hooks/categories/useWarehouseData";
-import useDebounce from "../../hooks/useDebounce";
+import useDebounce from "../../hooks/core/useDebounce";
 import { DropdownColumn } from "../core/CustomSelectLayout";
 import { SmartSelect } from "../core/SmartSelect";
 
@@ -47,7 +47,7 @@ const WarehouseSelect: React.FC<WarehouseSelectProps> = ({
   }, [warehouseData]);
 
   useEffect(() => {
-    if (!defaultData) return;
+    if (!defaultData?.id) return;
 
     const exists = listWarehouse.some((item) => item.id === defaultData.id);
     if (exists) return;

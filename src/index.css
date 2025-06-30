@@ -256,6 +256,72 @@ tr:hover > td .an-tag:first-child {
   height: 500px !important;
 }
 
+.product__table td .ant-input-number-outlined:not(.ant-input-number-disabled),
+.product__table td .ant-input-outlined:not(.ant-input-disabled) {
+  background: transparent !important;
+}
+
+.product__table .ant-input-number-outlined.ant-input-number-disabled,
+.product__table .ant-input-outlined.ant-input-disabled,
+.product__table .ant-input-outlined[disabled],
+.product__table .ant-picker-outlined.ant-picker-disabled,
+.product__table
+  .ant-select-outlined.ant-select-disabled:not(.ant-select-customize-input)
+  .ant-select-selector {
+  color: #666;
+  /* background-color: rgba(0, 0, 0, 0.03) !important; */
+  background-color: transparent !important;
+}
+
+.product__table .ant-input,
+.product__table .ant-select-selector,
+.product__table .ant-input-number-outlined.ant-input-number-disabled,
+.product__table .ant-input-number-outlined[disabled],
+.product__table .ant-input-number-outlined {
+  border-color: transparent !important;
+}
+.product__table .manager-btn {
+  opacity: 0;
+}
+
+.product__table 
+  tr:hover .manager-btn {
+  opacity: 1;
+}
+
+/* .product__table .ant-input:hover:not(.ant-input-disabled), */
+/* .product__table
+  .ant-select-selector:hover:not(.ant-select-disabled .ant-select-selector), */
+/* .product__table .ant-input-number-outlined.ant-input-number-disabled:hover, */
+/* .product__table .ant-input-number-outlined[disabled]:hover, */
+/* .product__table .ant-input-number-outlined:hover, */
+/* .product__table .ant-input:hover:not(.ant-input-disabled), */
+/* .product__table .ant-input:focus:not(.ant-input-disabled), */
+.product__table .ant-input-focused,
+/* .product__table
+  .ant-select-selector:hover:not(.ant-select-disabled .ant-select-selector), */
+.product__table .ant-select-focused .ant-select-selector,
+/* .product__table
+  .ant-input-number-outlined:hover:not(.ant-input-number-disabled),
+.product__table
+  .ant-input-number-outlined:focus:not(.ant-input-number-disabled), */
+.product__table .ant-input-number-outlined.ant-input-number-focused,
+.product__table tr:hover .ant-input:not(.ant-input-disabled),
+.product__table
+  tr:hover
+  .ant-select-selector:not(.ant-select-disabled .ant-select-selector),
+.product__table
+  tr:hover
+  .ant-input-number-outlined:not(.ant-input-number-disabled) {
+  border-color: #d9d9d9 !important;
+}
+
+.table-h-full.product__table .ant-table-body {
+  padding-bottom: 60px !important;
+}
+
+
+
 /* .ant-table-wrapper.ml-8 {
   margin-left: 220px !important;
 } */
@@ -398,6 +464,10 @@ tr:hover > td .an-tag:first-child {
 }
 
 /* space-col */
+.table-custom-row .ant-table-body tr td.ant-table-cell {
+  padding: 2px 12px !important;
+}
+
 .ant-table-thead:not(.ant-table-expanded-row-level-1 .ant-table-thead)
   > tr
   > th.space-column,
@@ -519,7 +589,7 @@ tr:hover > td .an-tag:first-child {
   border-bottom: 0 !important;
 }
 
-.product__table .ant-table-tbody tr > td:has(> div, > input) {
+.product__table .ant-table-tbody tr > td.ant-table-cell:has(> div, > input) {
   padding-left: 0.5px !important;
   padding-right: 0.5px !important;
   padding-top: 0.5px !important;
@@ -648,9 +718,6 @@ tr:hover > td .an-tag:first-child {
 }
 .ant-input-number-input-wrap {
   width: calc(100% - 20px);
-}
-.table-custom-row .ant-table-body tr td.ant-table-cell {
-  padding: 2px 8px !important;
 }
 
 .custom-search .ant-input {

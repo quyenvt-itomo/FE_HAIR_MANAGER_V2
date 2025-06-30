@@ -1,12 +1,16 @@
-const formatMoney = (value: number) => {
-  if (value == null) return "0 đ";
+import { FormatData } from "../models/base/format";
+import formatCurrency from "./formatCurrency";
 
-  const formatted = value.toLocaleString("en-US", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
-
-  return `${formatted} đ`;
+const formatMoney = (value?: number, format?: FormatData | null) => {
+  if (!value) return "";
+  
+  return formatCurrency(
+    value,
+    format?.currency?.decimalPrecision || 0,
+    format?.numberFormat?.thousandSeparator || ",",
+    format?.numberFormat?.decimalSeparator || ".",
+    format?.currency?.symbolPosition || "none"
+  );
 };
 
 export default formatMoney;

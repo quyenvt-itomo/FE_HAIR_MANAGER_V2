@@ -8,38 +8,8 @@ import { apiEndpoint, BASE_URL } from "../constants/ApiEndpoint";
  */
 
 type CodeType =
-  | "organization"
-  | "employee"
-  | "user"
-  | "customer"
-  | "supplier"
-  | "delivery"
-  | "partner"
-  | "product"
-  | "material"
-  | "quotation"
-  | "order"
-  | "order_purchase"
-  | "order_production"
-  | "invoice"
-  | "warehouse"
-  | "inventory"
-  | "production"
-  | "finance_record"
-  | "finance_imcome"
-  | "finance_expense"
-  | "contract"
-  | "orderexpense"
-  | "purchase_request"
-  | "payment_request"
-  | "inventory_normal_in" // nhap kho hang mua
-  | "inventory_finished_in" // nhap kho thanh pham
-  | "inventory_material_in" // nhap kho nguyen vat lieu
-  | "inventory_normal_out" // xuat kho hang ban
-  | "inventory_material_out" // xuat kho nguyen vat lieu
-  | "finished_out"
-  | "payment_income"
-  | "payment_expense";
+  | "purchase" // * Phiếu mua hàng
+  | "sale"; // * Phiếu bán hàng
 
 interface IQuery {
   type: CodeType;
@@ -52,7 +22,7 @@ export interface SetFormCodeProps {
   field?: string;
 }
 
-export const setFormCode = async ({
+const setFormCode = async ({
   form,
   query: { type, id },
   field = "code",
@@ -76,3 +46,5 @@ export const setFormCode = async ({
     console.error("There was a problem with the fetch operation:", error);
   }
 };
+
+export default setFormCode;

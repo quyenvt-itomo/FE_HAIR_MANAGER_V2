@@ -1,7 +1,7 @@
 import { Button, Dropdown, MenuProps, Space } from "antd";
 import { useState } from "react";
 import { ExportExcelQuery } from "../../models/base/excel_model";
-import { useExcelData } from "../../hooks/useExcelData";
+import { useExcelData } from "../../hooks/core/useExcelData";
 import { icons } from "../../assets/icons";
 import ModalImportExcel from "../modal/ModalImportExcel";
 

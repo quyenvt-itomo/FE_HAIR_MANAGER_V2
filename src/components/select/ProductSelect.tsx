@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { SelectProps } from "../../models/base/select_props";
 import { ProductData } from "../../models/categories/product";
 import { useProductData } from "../../hooks/categories/useProductData";
-import useDebounce from "../../hooks/useDebounce";
+import useDebounce from "../../hooks/core/useDebounce";
 import { DropdownColumn } from "../core/CustomSelectLayout";
 import { SmartSelect } from "../core/SmartSelect";
 
@@ -41,7 +41,7 @@ const ProductSelect: React.FC<SelectProps<ProductData>> = ({
   }, [productData]);
 
   useEffect(() => {
-    if (!defaultData) return;
+    if (!defaultData?.id) return;
 
     const exists = listProduct.some((item) => item.id === defaultData.id);
     if (exists) return;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { SelectProps } from "../../models/base/select_props";
 import { SupplierData } from "../../models/categories/supplier";
 import { useSupplierData } from "../../hooks/categories/useSupplierData";
-import useDebounce from "../../hooks/useDebounce";
+import useDebounce from "../../hooks/core/useDebounce";
 import { DropdownColumn } from "../core/CustomSelectLayout";
 import { SmartSelect } from "../core/SmartSelect";
 
@@ -40,7 +40,7 @@ const SupplierSelect: React.FC<SelectProps<SupplierData>> = ({
   }, [supplierData]);
 
   useEffect(() => {
-    if (!defaultData) return;
+    if (!defaultData?.id) return;
 
     const exists = listSupplier.some((item) => item.id === defaultData.id);
     if (exists) return;

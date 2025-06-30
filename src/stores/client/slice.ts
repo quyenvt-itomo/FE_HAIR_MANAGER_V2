@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserInfo } from "../../models/auth_model";
+import { FormatData } from "../../models/base/format";
 
 export interface ClientState {
   horizontal: boolean;
@@ -8,6 +9,7 @@ export interface ClientState {
   drawerOpen: boolean;
   info: UserInfo | null;
   permissions: { name: string; check: boolean }[];
+  format: FormatData | null;
 }
 
 const initialState: ClientState = {
@@ -17,6 +19,7 @@ const initialState: ClientState = {
   drawerOpen: false,
   info: null,
   permissions: [],
+  format: null,
 };
 
 const clientSlice = createSlice({
@@ -39,6 +42,9 @@ const clientSlice = createSlice({
       state.info = action.payload;
       state.permissions = action.payload.permissions || [];
     },
+    setFormat: (state, action: PayloadAction<FormatData>) => {
+      state.format = action.payload;
+    },
   },
 });
 
@@ -48,6 +54,7 @@ export const {
   setIsMobile,
   setDrawerOpen,
   setInfo,
+  setFormat,
 } = clientSlice.actions;
 
 export default clientSlice.reducer;
