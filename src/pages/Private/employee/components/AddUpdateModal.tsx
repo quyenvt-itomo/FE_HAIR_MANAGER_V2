@@ -30,7 +30,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
   const isAccountant = Form.useWatch("is_accountant", form);
   const isWarehouseManager = Form.useWatch("is_warehouse_manager", form);
   const isLeader = Form.useWatch("is_leader", form);
-  const isCreateAccount = Form.useWatch("is_create_account", form);
+  const isCreateAccount = Form.useWatch("isCreateAccount", form);
 
   useEffect(() => {
     if (!open) {
@@ -44,12 +44,12 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
         ...editData,
         is_leader: editData.role === "LEADER",
         is_warehouse_manager: editData.role === "WAREHOUSE_MANAGER",
-        permission_group_ids: editData.permission_group?.map(
+        permissionGroupIds: editData.permissionGroup?.map(
           (dev: any) => dev.id
         ),
         password:
           !!editData && (editData.access || editData.active) ? "******" : "",
-        leader_of_team: editData.leader_of_team?.map((dev) => dev.id),
+        leaderOfTeam: editData.leaderOfTeam?.map((dev) => dev.id),
       });
 
       setFileList(mapFileList(editData.avatar ? [editData.avatar] : []));
@@ -123,7 +123,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
         layout="vertical"
         className="flex flex-col mt-5 gap-6 bg-slate-600"
         form={form}
-        initialValues={{ remember: true, is_create_account: false }}
+        initialValues={{ remember: true, isCreateAccount: false }}
         onFinish={onFinish}
         autoComplete="off"
       >
@@ -157,7 +157,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
             </FloatLabel>
           </Form.Item>
           <Form.Item
-            name="phone_number"
+            name="phoneNumber"
             rules={[
               {
                 pattern: /^\d{8,15}$/,
@@ -260,7 +260,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
             </Col>
             <Col span={12}>
               <Form.Item
-                name="leader_of_team"
+                name="leaderOfTeam"
                 className="col-span-2"
                 rules={[
                   {
@@ -272,7 +272,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
                 <FloatLabel label="Công đoạn" required>
                   <PhaseSelect
                     placeholder=""
-                    defaultData={editData?.leader_of_team}
+                    defaultData={editData?.leaderOfTeam}
                   />
                 </FloatLabel>
               </Form.Item>
@@ -291,7 +291,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
             </Col>
             <Col>
               <Form.Item
-                name="is_create_account"
+                name="isCreateAccount"
                 valuePropName="checked"
                 noStyle
               >
@@ -350,13 +350,13 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<EmployeeData>> = ({
                   <div className="flex items-center gap-2 w-full">
                     <Form.Item
                       label="Quyền trong hệ thống"
-                      name="permission_group_ids"
+                      name="permissionGroupIds"
                       className="flex-1"
                     >
                       <FloatLabel label="Công đoạn" required>
                         <PermissionGroupSelect
                           placeholder=""
-                          defaultData={editData?.permission_group}
+                          defaultData={editData?.permissionGroup}
                         />
                       </FloatLabel>
                     </Form.Item>

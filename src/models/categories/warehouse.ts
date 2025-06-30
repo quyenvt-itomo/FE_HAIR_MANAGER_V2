@@ -3,7 +3,7 @@ import { ApiResponse } from "../base/api_response_model";
 import { PhaseData } from "../operations/phase";
 
 export interface WarehouseQuery extends ApiRequestQuery {
-  product_id?: number;
+  productId?: number;
 }
 
 export interface WarehouseData {
@@ -11,13 +11,13 @@ export interface WarehouseData {
   name: string;
   code: string;
 
-  phase_id?: number;
+  phaseId?: number;
   phase: PhaseData;
 
-  phone_number: string;
+  phoneNumber: string;
   address: string;
   description: string;
-  current_balance?: number;
+  currentBalance?: number;
 }
 
 export interface WarehouseResponse extends ApiResponse {}

@@ -43,7 +43,7 @@ export const usePurchaseData = ({
 
   const fetchPurchaseData = () => {
     if (isLockHook) return;
-    const { employee_ids, ...otherFilter } = transformFilters(filters);
+    const { employeeIds, ...otherFilter } = transformFilters(filters);
     dispatch(
       getAll({
         page,
@@ -51,7 +51,7 @@ export const usePurchaseData = ({
         keyword,
         startAt,
         endAt,
-        employee_purchase_ids: employee_ids,
+        employee_purchaseIds: employeeIds,
         ...otherFilter,
       })
     );

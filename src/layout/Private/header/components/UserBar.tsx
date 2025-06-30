@@ -59,7 +59,7 @@ const UserBar: React.FC<UserBarProps> = ({}) => {
     setUserData(userInfo);
   }, [userInfo]);
 
-  const { username, employee } = userInfo || {};
+  const { username, avatar, name } = userInfo || {};
 
   const items: MenuProps["items"] = [
     {
@@ -93,19 +93,21 @@ const UserBar: React.FC<UserBarProps> = ({}) => {
   return (
     <div className="flex justify-end">
       <Dropdown menu={{ items }} trigger={["click"]} className="cursor-pointer">
-      <section
+        <section
           className="flex flex-row items-center gap-2"
           onClick={(e) => e.preventDefault()}
         >
           <div className="h-10 w-10 rounded-full overflow-hidden">
-            <UserImage src={employee?.avatar} />
+            <UserImage src={avatar} />
           </div>
-          {!horizontal && <div className="hidden md:flex flex-row items-center">
-            <div className="flex flex-col select-none">
-              <Text className="font-semibold">{employee?.name || username}</Text>
-              <Text className="text-gray-400">{username}</Text>
+          {!horizontal && (
+            <div className="hidden md:flex flex-row items-center">
+              <div className="flex flex-col select-none">
+                <Text className="font-semibold">{name || username}</Text>
+                <Text className="text-gray-400">{username}</Text>
+              </div>
             </div>
-          </div>}
+          )}
         </section>
       </Dropdown>
       <AccountInformation

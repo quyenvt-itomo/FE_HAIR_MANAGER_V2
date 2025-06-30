@@ -2,7 +2,7 @@ import { ApiRequestQuery } from "../base/api_request_model";
 import { ApiResponse } from "../base/api_response_model";
 
 export interface ProductGroupQuery extends ApiRequestQuery {
-  more_query?: any;
+  moreQuery?: any;
 }
 
 export interface ProductGroupData {

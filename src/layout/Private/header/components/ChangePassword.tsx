@@ -42,7 +42,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, onClose }) => {
       const values = await form.validateFields();
 
       // Kiểm tra mật khẩu cũ và mới
-      if (values.old_password === values.new_password) {
+      if (values.oldPassword === values.newPassword) {
         message.error("Mật khẩu mới không thể giống mật khẩu cũ");
         return;
       }
@@ -73,9 +73,9 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, onClose }) => {
       footer={null}
       centered
     >
-      <Form form={form} layout="vertical" initialValues={{ is_logout: false }}>
+      <Form form={form} layout="vertical" initialValues={{ isLogout: false }}>
         <Form.Item
-          name="old_password"
+          name="oldPassword"
           label="Mật khẩu cũ"
           className="mt-4"
           rules={[{ required: true, message: "Hãy nhập mật khẩu cũ" }]}
@@ -84,7 +84,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, onClose }) => {
         </Form.Item>
 
         <Form.Item
-          name="new_password"
+          name="newPassword"
           label="Mật khẩu mới"
           className="mt-4"
           rules={[
@@ -103,7 +103,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, onClose }) => {
             { required: true, message: "Hãy xác nhận lại mật khẩu mới" },
             ({ getFieldValue }) => ({
               validator(_, value) {
-                const newPassword = getFieldValue("new_password");
+                const newPassword = getFieldValue("newPassword");
                 if (!value || value === newPassword) {
                   return Promise.resolve();
                 }
@@ -117,7 +117,7 @@ const ChangePassword: React.FC<ChangePasswordProps> = ({ open, onClose }) => {
           <Input.Password className="h-9" />
         </Form.Item>
 
-        <Form.Item name="is_logout" valuePropName="checked" className="mt-4">
+        <Form.Item name="isLogout" valuePropName="checked" className="mt-4">
           <Checkbox>Đăng xuất khỏi mọi thiết bị</Checkbox>
         </Form.Item>
 

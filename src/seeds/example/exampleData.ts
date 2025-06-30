@@ -15,7 +15,7 @@ export const stockInData1 = [
                     id: 2,
                     container_no: "TEMU0521450",
                     seal_no: "CN425821A",
-                    invoice_id: 1,
+                    invoiceId: 1,
                     note: null,
                     packing_details: [
                         {
@@ -84,7 +84,7 @@ export const stockInData1 = [
                     id: 1,
                     container_no: "TEMU0629370",
                     seal_no: "CN42586AS",
-                    invoice_id: 1,
+                    invoiceId: 1,
                     note: null,
                     packing_details: [
                         {
@@ -335,7 +335,7 @@ export const stockInData1 = [
             id: 2,
             container_no: "TEMU0521450",
             seal_no: "CN425821A",
-            invoice_id: 1,
+            invoiceId: 1,
             note: null,
         },
         packing_detail: {

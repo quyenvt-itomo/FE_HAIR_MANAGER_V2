@@ -7,13 +7,13 @@ import { DropdownColumn } from "../core/CustomSelectLayout";
 import { SmartSelect } from "../core/SmartSelect";
 
 interface PhaseSelectProps extends SelectProps<PhaseData> {
-  get_for_me?: boolean;
+  getForMe?: boolean;
 }
 
 const PhaseSelect: React.FC<PhaseSelectProps> = ({
   value,
   defaultData,
-  get_for_me,
+  getForMe,
   onChange,
   onChangeData,
   onFocus,
@@ -30,7 +30,7 @@ const PhaseSelect: React.FC<PhaseSelectProps> = ({
     page,
     size: 20,
     isLockHook,
-    get_for_me,
+    getForMe,
   });
 
   useEffect(() => {

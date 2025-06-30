@@ -9,13 +9,13 @@ export interface ApiRequestQuery {
   sortType?: string;
   status?: string;
 
-  supplier_ids?: string;
-  customer_ids?: string;
-  product_ids?: string;
-  hair_color_ids?: string;
-  employee_purchase_ids?: string;
-  employee_ids?: string;
-  warehouse_ids?: string;
+  supplierIds?: string;
+  customerIds?: string;
+  productIds?: string;
+  hairColorIds?: string;
+  employee_purchaseIds?: string;
+  employeeIds?: string;
+  warehouseIds?: string;
 }
 
 export interface ImportExcelData {

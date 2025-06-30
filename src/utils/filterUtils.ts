@@ -44,11 +44,11 @@ export const transformAndStringifyFilters = (arr: FilterItemProps[]) => {
 export const transformFilters = (filters: FiltersModel | null | undefined) => {
   if (!filters) {
     return {
-      product_ids: undefined,
-      supplier_ids: undefined,
-      customer_ids: undefined,
-      warehouse_ids: undefined,
-      employee_ids: undefined,
+      productIds: undefined,
+      supplierIds: undefined,
+      customerIds: undefined,
+      warehouseIds: undefined,
+      employeeIds: undefined,
     };
   }
 
@@ -58,10 +58,10 @@ export const transformFilters = (filters: FiltersModel | null | undefined) => {
   };
 
   return {
-    product_ids: getIdsOrUndefined("product"),
-    supplier_ids: getIdsOrUndefined("supplier"),
-    customer_ids: getIdsOrUndefined("customer"),
-    warehouse_ids: getIdsOrUndefined("warehouse"),
-    employee_ids: getIdsOrUndefined("employee"),
+    productIds: getIdsOrUndefined("product"),
+    supplierIds: getIdsOrUndefined("supplier"),
+    customerIds: getIdsOrUndefined("customer"),
+    warehouseIds: getIdsOrUndefined("warehouse"),
+    employeeIds: getIdsOrUndefined("employee"),
   };
 };

@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import { UseDataParams } from "../../models/base/hook_model";
 
 interface UseWahouseDataParams extends UseDataParams {
-  product_id?: number;
+  productId?: number;
 }
 
 export const useWarehouseData = ({
@@ -25,7 +25,7 @@ export const useWarehouseData = ({
   sortType,
   onCloseModal,
   isLockHook,
-  product_id,
+  productId,
 }: UseWahouseDataParams) => {
   const dispatch = useDispatch();
   const {
@@ -49,7 +49,7 @@ export const useWarehouseData = ({
         page,
         size,
         keyword,
-        product_id
+        productId
       })
     );
   };
@@ -72,7 +72,7 @@ export const useWarehouseData = ({
 
   useEffect(() => {
     fetchWarehouseData();
-  }, [dispatch, page, size, keyword, sortBy, sortType, isLockHook, product_id]);
+  }, [dispatch, page, size, keyword, sortBy, sortType, isLockHook, productId]);
 
   useEffect(() => {
     if (!isCheckAdd && !isCheckDelete && !isCheckUpdate) return;

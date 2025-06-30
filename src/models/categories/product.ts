@@ -12,7 +12,7 @@ import { UnitData } from "./unit";
 import { WarehouseData } from "./warehouse";
 
 export interface ProductQuery extends ApiRequestQuery {
-  more_query?: any;
+  moreQuery?: any;
   type?: string;
 }
 
@@ -23,42 +23,42 @@ export interface ProductData {
   price: number;
   detail: string;
   initial_balance: number;
-  hair_color: string;
-  string_color: string;
+  hairColor: string;
+  stringColor: string;
   quality: string;
-  hair_type_detail: string;
-  rubber_band_color: string;
-  no_tail_cut: boolean;
+  hairTypeDetail: string;
+  rubberBandColor: string;
+  noTailCut: boolean;
   pictures: string[];
   description: string;
 
-  category_id?: number;
+  categoryId?: number;
   category?: CategoryData;
 
-  type_id?: number;
+  typeId?: number;
   type?: ProductTypeData;
 
-  unit_id?: number;
+  unitId?: number;
   unit?: UnitData;
 
-  warehouse_default_id?: number;
+  warehouseId?: number;
   warehouse?: WarehouseData;
 
-  hair_tone_id?: number;
-  hair_tone?: HairToneData;
+  hairToneId?: number;
+  hairTone?: HairToneData;
 
-  hair_quality_id?: number;
-  hair_quality?: HairQualityData;
+  hairQualityId?: number;
+  hairQuality?: HairQualityData;
 
-  hair_type_id?: number;
-  hair_type?: HairTypeData;
+  hairTypeId?: number;
+  hairType?: HairTypeData;
 
-  length_id?: number;
+  lengthId?: number;
   length?: LengthData;
 
-  length_cm?: number;
-  length_inch?: number;
-  material_id?: number;
+  lengthCm?: number;
+  lengthInch?: number;
+  materialId?: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type

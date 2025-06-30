@@ -1,11 +1,11 @@
 export const publicRoutesName = {
   login: "/login",
-  error_network: "/error_network",
-  error_404: "/error_404",
-  forgot_password: "/forgot_password",
-  confirm_email: "/confirm_email",
-  new_password: "/new_password",
-  blank: "/blank_page",
+  error_network: "/error-network",
+  error_404: "/error-404",
+  forgot_password: "/forgot-password",
+  confirm_email: "/confirm-email",
+  new_password: "/new-password",
+  blank: "/blank-page",
 };
 
 export const privateRoutesName = {
@@ -15,8 +15,8 @@ export const privateRoutesName = {
     overview: "/report/overview",
     output: "/report/output",
     sales: "/report/sales",
-    supplier_debt: "/report/supplier_debt",
-    customer_debt: "/report/customer_debt",
+    supplier_debt: "/report/supplier-debt",
+    customer_debt: "/report/customer-debt",
     //   debt_customer: "/report/debt/customer/:id",
     inventory: "/report/inventory",
   },

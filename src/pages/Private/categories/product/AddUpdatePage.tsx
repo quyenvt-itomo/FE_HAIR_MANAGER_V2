@@ -40,6 +40,7 @@ import CustomTitle from "../../../../layout/Private/header/components/Title";
 import ProductTypeSelect from "../../../../components/manager_select/ProductTypeSelect";
 import WarehouseSelect from "../../../../components/select/WarehouseSelect";
 import uploads from "../../../../utils/uploads";
+import uploadFiles from "../../../../utils/uploadFiles";
 
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
@@ -76,7 +77,7 @@ const AddUpdateProductPage: React.FC = () => {
   useEffect(() => {
     if (lengthCm) {
       const lengthInch = (Number(lengthCm.name) / 2.54).toFixed(2);
-      form.setFieldsValue({ length_inch: lengthInch });
+      form.setFieldsValue({ lengthInch: lengthInch });
     }
   }, [lengthCm, form]);
 
@@ -95,14 +96,14 @@ const AddUpdateProductPage: React.FC = () => {
 
     form.setFieldsValue({
       ...editData,
-      category_id: editData.category?.id,
-      type_id: editData.type?.id,
-      unit_id: editData.unit?.id,
-      warehouse_default_id: editData.warehouse?.id,
-      length_id: editData.length?.id,
-      hair_tone_id: editData.hair_tone?.id,
-      hair_quality_id: editData.hair_quality?.id,
-      hair_type_id: editData.hair_type?.id,
+      categoryId: editData.category?.id,
+      typeId: editData.type?.id,
+      unitId: editData.unit?.id,
+      warehouseId: editData.warehouse?.id,
+      lengthId: editData.length?.id,
+      hairToneId: editData.hairTone?.id,
+      hairQualityId: editData.hairQuality?.id,
+      hairTypeId: editData.hairType?.id,
     });
     setFileList(mapFileList(editData.pictures));
   }, [editData, form]);
@@ -124,10 +125,8 @@ const AddUpdateProductPage: React.FC = () => {
   ) => {
     let uploadedPictures: string[] = [];
 
-    const newFiles = fileList.filter((file) => !file.url);
-    if (newFiles.length > 0) {
-      uploadedPictures = await uploads(newFiles);
-      if (!uploadedPictures) return;
+    if (fileList.length > 0) {
+      uploadedPictures = await uploadFiles(fileList);
     }
 
     const payload = {
@@ -203,16 +202,13 @@ const AddUpdateProductPage: React.FC = () => {
           <div className="hidden lg:flex mr-2">
             {horizontal ? <CustomTitle /> : <></>}
           </div>
-          <SubmitButton
-            onCancel={() => navigate(-1)}
-            onSubmit={() => {}}
-          />
+          <SubmitButton onCancel={() => navigate(-1)} onSubmit={() => {}} />
         </div>
         <div className="space-y-6">
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
-                name="category_id"
+                name="categoryId"
                 rules={[
                   {
                     required: true,
@@ -227,7 +223,7 @@ const AddUpdateProductPage: React.FC = () => {
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item name="type_id" className="mb-4">
+              <Form.Item name="typeId" className="mb-4">
                 <FloatLabel label="Kiểu hàng">
                   <ProductTypeSelect placeholder="" />
                 </FloatLabel>
@@ -272,7 +268,7 @@ const AddUpdateProductPage: React.FC = () => {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
-                name="unit_id"
+                name="unitId"
                 rules={[
                   {
                     required: true,
@@ -304,7 +300,7 @@ const AddUpdateProductPage: React.FC = () => {
           </Row>
           <Row justify="space-around">
             <Col span={24}>
-              <Form.Item name="warehouse_default_id">
+              <Form.Item name="warehouseId">
                 <FloatLabel label="Kho mặc định">
                   <WarehouseSelect
                     placeholder=""
@@ -330,7 +326,7 @@ const AddUpdateProductPage: React.FC = () => {
         <div className="space-y-6">
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="length_id">
+              <Form.Item name="lengthId">
                 <FloatLabel label="Độ dài (cm)">
                   <LengthSelect
                     placeholder=""
@@ -343,7 +339,7 @@ const AddUpdateProductPage: React.FC = () => {
               <Form.Item name="length" hidden />
             </Col>
             <Col span={12}>
-              <Form.Item name="length_inch">
+              <Form.Item name="lengthInch">
                 <FloatLabel label="Độ dài (inch)">
                   <InputNumber
                     className="h-9 flex items-center w-full"
@@ -355,14 +351,14 @@ const AddUpdateProductPage: React.FC = () => {
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="hair_color">
+              <Form.Item name="hairColor">
                 <FloatLabel label="Màu tóc">
                   <Input className="h-9 w-full" />
                 </FloatLabel>
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item name="string_color">
+              <Form.Item name="stringColor">
                 <FloatLabel label="Dây màu">
                   <Input className="h-9 w-full" />
                 </FloatLabel>
@@ -371,7 +367,7 @@ const AddUpdateProductPage: React.FC = () => {
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="hair_tone_id">
+              <Form.Item name="hairToneId">
                 <FloatLabel label="Tông tóc">
                   <HairToneSelect placeholder="" />
                 </FloatLabel>
@@ -387,7 +383,7 @@ const AddUpdateProductPage: React.FC = () => {
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="hair_quality_id">
+              <Form.Item name="hairQualityId">
                 <FloatLabel label="Chất tóc">
                   <HairQualitySelect placeholder="" />
                 </FloatLabel>
@@ -396,7 +392,7 @@ const AddUpdateProductPage: React.FC = () => {
             <Col span={12}>
               <div className="bg-gray-200 rounded-[3px] h-[38px] flex items-center justify-between px-3">
                 <span className="text-gray-600">Không cắt đuôi</span>
-                <Form.Item name="no_tail_cut">
+                <Form.Item name="noTailCut">
                   <Switch className="bg-gray-300" />
                 </Form.Item>
               </div>
@@ -404,14 +400,14 @@ const AddUpdateProductPage: React.FC = () => {
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="hair_type_id">
+              <Form.Item name="hairTypeId">
                 <FloatLabel label="Kiểu tóc">
                   <HairTypeSelect placeholder="" />
                 </FloatLabel>
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item name="hair_type_detail">
+              <Form.Item name="hairTypeDetail">
                 <FloatLabel label="Chi tiết kiểu tóc">
                   <Input className="h-9 w-full" />
                 </FloatLabel>
@@ -420,7 +416,7 @@ const AddUpdateProductPage: React.FC = () => {
           </Row>
           <Row justify="space-around">
             <Col span={24}>
-              <Form.Item name="rubber_band_color">
+              <Form.Item name="rubberBandColor">
                 <FloatLabel label="Màu chun">
                   <Input className="h-9 w-full" />
                 </FloatLabel>

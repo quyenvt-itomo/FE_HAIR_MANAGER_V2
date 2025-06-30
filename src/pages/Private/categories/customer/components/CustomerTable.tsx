@@ -39,7 +39,7 @@ const CustomerTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Số điện thoại",
-      dataIndex: "phone_number",
+      dataIndex: "phoneNumber",
       key: "phoneNumber",
       width: 120,
       align: "center",
@@ -52,7 +52,7 @@ const CustomerTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Dư nợ bắt đầu",
-      dataIndex: "initial_debt",
+      dataIndex: "initialDebt",
       key: "initialDebt",
       align: "right",
       width: 200,

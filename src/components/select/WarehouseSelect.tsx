@@ -7,13 +7,13 @@ import { DropdownColumn } from "../core/CustomSelectLayout";
 import { SmartSelect } from "../core/SmartSelect";
 
 interface WarehouseSelectProps extends SelectProps<WarehouseData> {
-  product_id?: number;
+  productId?: number;
 }
 
 const WarehouseSelect: React.FC<WarehouseSelectProps> = ({
   value,
   defaultData,
-  product_id,
+  productId,
   onChange,
   onChangeData,
   onFocus,
@@ -24,14 +24,14 @@ const WarehouseSelect: React.FC<WarehouseSelectProps> = ({
   const [page, setPage] = useState<number>(1);
   const [keywordTemp, setKeywordTemp] = useState<string>("");
   const keyword = useDebounce(keywordTemp, 300, setPage);
-  const showCurrentBalance = product_id !== undefined;
+  const showCurrentBalance = productId !== undefined;
 
   const { warehouseData, loading, pagination } = useWarehouseData({
     keyword,
     page,
     size: 20,
     isLockHook,
-    product_id,
+    productId,
   });
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const WarehouseSelect: React.FC<WarehouseSelectProps> = ({
   if (showCurrentBalance) {
     columns.push({
       label: "Tồn hiện tại",
-      dataIndex: "current_balance",
+      dataIndex: "currentBalance",
       className: "w-1/3",
       dataType: "number",
     });
@@ -103,7 +103,7 @@ const WarehouseSelect: React.FC<WarehouseSelectProps> = ({
         onFocus?.(e);
       }}
       notFoundContent={
-        product_id === 0 ? "Hãy chọn hàng hóa" : "Không có kho phù hợp"
+        productId === 0 ? "Hãy chọn hàng hóa" : "Không có kho phù hợp"
       }
       {...rest}
     />

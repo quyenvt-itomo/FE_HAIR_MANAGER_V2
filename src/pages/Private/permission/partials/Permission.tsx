@@ -81,7 +81,7 @@ const Permission: React.FC<PermissionProps> = ({ selectedRow }) => {
 
   useEffect(() => {
     if (selectedRow) {
-      setPermissionDetail(selectedRow.permission_detail as PermissionData[]);
+      setPermissionDetail(selectedRow.permissionDetail as PermissionData[]);
     }
   }, [selectedRow]);
 
@@ -105,14 +105,14 @@ const Permission: React.FC<PermissionProps> = ({ selectedRow }) => {
 
     updatePermissionGroup({
       ...selectedRow,
-      permission_ids: permissionDetail.filter((p) => p.check).map((p) => p.id),
+      permissionIds: permissionDetail.filter((p) => p.check).map((p) => p.id),
     });
   };
 
   const hasPermission = hasAnyRequiredPermission(permissions || [], [
     PermissionMap.PERMISSION_GROUP.UPDATE_PERMISSION_GROUP,
   ]);
-  const isDisabled = selectedRow?.is_default && hasPermission;
+  const isDisabled = selectedRow?.isDefault && hasPermission;
 
   return (
     <>

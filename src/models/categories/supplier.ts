@@ -9,12 +9,12 @@ export interface SupplierData {
   name: string;
   code: string;
   symbol: string;
-  phone_number: string;
+  phoneNumber: string;
   email: string;
   address: string;
   avatar: string;
   description?: string;
-  initial_debt: number;
+  initialDebt: number;
 }
 
 export interface SupplierResponse extends ApiResponse {}

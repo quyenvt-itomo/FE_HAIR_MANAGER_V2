@@ -3,7 +3,7 @@ import { ApiResponse } from "./base/api_response_model";
 import { PermissionData } from "./permission";
 
 export interface PermissionGroupQuery extends ApiRequestQuery {
-  more_query?: any;
+  moreQuery?: any;
   type?: string;
 }
 
@@ -12,10 +12,10 @@ export interface PermissionGroupData {
   name: string;
   description?: string;
 
-  permission_ids: number[];
-  permission_detail: PermissionData[];
+  permissionIds: number[];
+  permissionDetail: PermissionData[];
 
-  is_default?: boolean;
+  isDefault?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type

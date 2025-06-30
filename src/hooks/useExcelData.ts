@@ -40,20 +40,19 @@ export const useExcelData = (query?: useExcelDataParams) => {
   };
 
   useEffect(() => {
-    if (!template || query) return;
+    if (!template || !query) return;
     downloadFile(template.url);
     dispatch(resetExcel());
   }, [template]);
 
   useEffect(() => {
-    if (!import_result || query) return;
+    if (!import_result || !query) return;
     dispatch(resetExcel());
     showImportResultModal(import_result);
   }, [import_result]);
 
   useEffect(() => {
-    if (!export_result || query) return;
-    console.log("Export result changed:", export_result);
+    if (!export_result || !query) return;
 
     dispatch(resetExcel());
     downloadFile(export_result);

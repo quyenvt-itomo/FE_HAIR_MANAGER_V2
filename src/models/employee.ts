@@ -4,16 +4,16 @@ import { PermissionData } from "./permission";
 import { PermissionGroupData } from "./permission_group";
 
 export interface EmployeeQuery extends ApiRequestQuery {
-  more_query?: any;
+  moreQuery?: any;
   type?: string;
 }
 
 export interface EmployeeData {
   id: number;
   code?: string;
-  avatar?: string;
+  avatar?: string | null;
   name: string;
-  phone_number: string;
+  phoneNumber: string;
   address?: string;
   username: string;
   email: string;
@@ -22,19 +22,19 @@ export interface EmployeeData {
 
   status: boolean;
 
-  permission_group_ids?: number[];
-  permission_group: PermissionGroupData[];
+  permissionGroupIds?: number[];
+  permissionGroup: PermissionGroupData[];
 
-  // leader_of_team?: number[];
-  leader_of_team?: any[];
+  // leaderOfTeam?: number[];
+  leaderOfTeam?: any[];
 
   access: boolean;
   active: boolean;
 
   position: string;
-  is_create_account?: boolean;
+  isCreateAccount?: boolean;
   password?: string;
-  department_id: number;
+  departmentId: number;
   gender: string;
   description: string | null;
 }

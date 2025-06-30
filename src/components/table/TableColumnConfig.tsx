@@ -87,9 +87,7 @@ const TableColumnConfig: React.FC<TableColumnConfigProps> = ({
   const [finalColumns, setFinalColumns] = useState<TableColumnsType>([]);
   const indexCheck = hasSummary ? 1 : 0;
 
-  const { exportCurrentExcel } = useExcelData({
-    isLockHook: !fileQuery,
-  });
+  const { exportCurrentExcel } = useExcelData(fileQuery);
 
   const length = dataSource?.length;
   const increasedLength = hasSummary ? 1 : 0;

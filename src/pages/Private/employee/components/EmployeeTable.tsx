@@ -36,8 +36,8 @@ const EmployeeTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Số điện thoại",
-      dataIndex: "phone_number",
-      key: "phone_number",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber",
       className: "text-center",
       width: 120,
     },
@@ -49,8 +49,8 @@ const EmployeeTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Quyền trong hệ thống",
-      dataIndex: "permission_group",
-      key: "permission_group",
+      dataIndex: "permissionGroup",
+      key: "permissionGroup",
       render: (value: any) =>
         value && Array.isArray(value) ? (
           <div className="flex flex-wrap gap-2">
@@ -74,8 +74,8 @@ const EmployeeTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Tổ quản lý",
-      dataIndex: "leader_of_team",
-      key: "leader_of_team",
+      dataIndex: "leaderOfTeam",
+      key: "leaderOfTeam",
       render: (value: any) =>
         value && Array.isArray(value) ? (
           <div className="flex flex-wrap gap-2">

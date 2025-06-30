@@ -27,7 +27,7 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
   useEffect(() => {
     const updateData = dataSource.map((item: any) => ({
       ...item,
-      details: item.purchase_detail_data,
+      details: item.details_data,
     }));
     setData(updateData);
   }, [dataSource]);
@@ -35,8 +35,8 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
   const columns: any[] = [
     {
       title: "Ngày",
-      dataIndex: "time_at",
-      key: "time_at",
+      dataIndex: "timeAt",
+      key: "timeAt",
       width: 150,
       align: "center",
       render: (value: string) => formatDateDDMMYYYY(value),
@@ -73,8 +73,8 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Người mua hàng",
-      dataIndex: "employee_purchased_data",
-      key: "employee_purchased_data",
+      dataIndex: "employee_data",
+      key: "employee_data",
       render: (value: any) => value?.full_name,
       width: 270,
     },
@@ -134,8 +134,8 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
     },
     {
       title: "Màu sắc",
-      dataIndex: ["product_data", "hair_color"],
-      key: "hair_color_data",
+      dataIndex: ["product_data", "hairColor"],
+      key: "hairColor_data",
       width: 130,
     },
     {

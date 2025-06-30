@@ -16,8 +16,8 @@ const ProductionProcessTable: React.FC = () => {
 
   const { phaseData } = usePhaseData({
     page: 1,
-    limit: 30,
-    get_for_me: true,
+    size: 30,
+    getForMe: true,
     onCloseModal: () => {},
   })
 
@@ -57,7 +57,7 @@ const ProductionProcessTable: React.FC = () => {
                 }}
                 onClick={() =>
                   navigate(
-                    privateRoutesName.production_process + `?id=${stage.id}`
+                    privateRoutesName.operations.production.page + `?id=${stage.id}`
                   )
                 }
               >
@@ -91,7 +91,7 @@ const ProductionProcessTable: React.FC = () => {
                 }}
                 onClick={() =>
                   navigate(
-                    privateRoutesName.production_process + `?id=${stage.id}`
+                    privateRoutesName.operations.production.page + `?id=${stage.id}`
                   )
                 }
               >
@@ -125,7 +125,7 @@ const ProductionProcessTable: React.FC = () => {
                 }}
                 onClick={() =>
                   navigate(
-                    privateRoutesName.production_process + `?id=${stage.id}`
+                    privateRoutesName.operations.production.page + `?id=${stage.id}`
                   )
                 }
               >

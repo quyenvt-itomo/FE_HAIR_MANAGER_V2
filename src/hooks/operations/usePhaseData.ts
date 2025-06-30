@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import { UseDataParams } from "../../models/base/hook_model";
 
 interface UsePhaseDataParams extends UseDataParams {
-  get_for_me?: boolean;
+  getForMe?: boolean;
 }
 
 export const usePhaseData = ({
@@ -25,7 +25,7 @@ export const usePhaseData = ({
   sortType,
   onCloseModal,
   isLockHook,
-  get_for_me,
+  getForMe,
 }: UsePhaseDataParams) => {
   const dispatch = useDispatch();
   const {
@@ -49,7 +49,7 @@ export const usePhaseData = ({
         page,
         size,
         keyword,
-        get_for_me,
+        getForMe,
       })
     );
   };
@@ -80,7 +80,7 @@ export const usePhaseData = ({
     sortBy,
     sortType,
     isLockHook,
-    get_for_me,
+    getForMe,
   ]);
 
   useEffect(() => {

@@ -12,7 +12,7 @@ export const getData = async <T>(
     const response = await apiInstance.get<ApiResponse<T>>(url, {
       params: {
         ...otherParams,
-        s_global: keyword,
+        keyword: keyword,
         start_date: startAt,
         end_date: endAt,
       },

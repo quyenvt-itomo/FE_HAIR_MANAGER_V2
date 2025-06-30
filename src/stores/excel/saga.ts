@@ -4,7 +4,6 @@ import { SagaIterator } from "redux-saga";
 import { getData, postData } from "../../api/apiClient";
 
 import {
-  ExcelTemplateQuery,
   ExportExcelQuery,
   ImportExcelData,
 } from "../../models/base/excel_model";
@@ -22,7 +21,7 @@ import {
 const objectKey: ObjectKeys = "excel";
 
 function* getTemplateSaga(
-  action: PayloadAction<ExcelTemplateQuery>
+  action: PayloadAction<ExportExcelQuery>
 ): SagaIterator {
   try {
     const response = yield call(() =>

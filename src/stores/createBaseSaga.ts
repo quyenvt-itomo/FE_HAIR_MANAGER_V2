@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { SagaIterator } from "redux-saga";
 import { deleteData, getData, postData, putData } from "../api/apiClient";
@@ -93,11 +93,11 @@ export function createBaseSaga<TData = any, TQuery = any>({
   }
 
   function* saga(): SagaIterator {
-    yield takeLatest(`${name}/getAll`, getAllSaga);
-    yield takeLatest(`${name}/getItem`, getItemSaga);
-    yield takeLatest(`${name}/addItem`, addItemSaga);
-    yield takeLatest(`${name}/updateItem`, updateItemSaga);
-    yield takeLatest(`${name}/deleteItem`, deleteItemSaga);
+    yield takeEvery(`${name}/getAll`, getAllSaga);
+    yield takeEvery(`${name}/getItem`, getItemSaga);
+    yield takeEvery(`${name}/addItem`, addItemSaga);
+    yield takeEvery(`${name}/updateItem`, updateItemSaga);
+    yield takeEvery(`${name}/deleteItem`, deleteItemSaga);
 
     // Gọi thêm các saga mở rộng nếu có
     if (extraSagas?.length) {

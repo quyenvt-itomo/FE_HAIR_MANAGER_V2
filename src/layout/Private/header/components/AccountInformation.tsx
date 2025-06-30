@@ -43,8 +43,6 @@ const AccountInformation: React.FC<InfoProps> = ({ open, onClose }) => {
     if (userInfo && open) {
       form.setFieldsValue({
         ...userInfo,
-        name: userInfo.employee?.name,
-        phone: userInfo?.employee?.phone,
       });
       // if (!userInfo.avatar) return;
       // setFileList([
@@ -77,19 +75,25 @@ const AccountInformation: React.FC<InfoProps> = ({ open, onClose }) => {
   const onFinish: FormProps<UserInfo>["onFinish"] = async (
     values: UserInfo
   ) => {
-    let uploadedPicture: string = "";
+    if (fileList.length > 0) {
+      const file = fileList[0];
 
-    const newFiles = fileList.filter((file) => !file.url);
-    if (newFiles.length > 0) {
-      const response = await uploads(newFiles);
-      uploadedPicture = response;
+      if (file.originFileObj) {
+        const formData = new FormData();
+        const keys = ["avatar"] as const;
+        formData.append("files[]", file.originFileObj);
+        formData.append("keys[]", keys[0]);
+        const response = await uploads(formData, keys);
+        if (!response) return;
+        values.avatar = response.avatar;
+      } else {
+        values.avatar = userInfo?.avatar;
+      }
+    } else {
+      values.avatar = null;
     }
 
-    const payload: UserInfo = {
-      ...values,
-    };
-
-    dispatch(updateDataInfo(payload));
+    dispatch(updateDataInfo(values));
   };
 
   return (

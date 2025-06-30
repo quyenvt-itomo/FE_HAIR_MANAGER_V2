@@ -52,22 +52,10 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<SupplierData>> = ({
   const onFinish: FormProps<SupplierData>["onFinish"] = async (
     values: SupplierData
   ) => {
-    let avatar;
-
-    if (fileList.length === 0) {
-      avatar = null;
-    } else if (fileList[0].originFileObj) {
-      // const response = await uploads([fileList[0]]);
-      // if (!response) return;
-      // avatar = response[0];
-    } else {
-      avatar = editData?.avatar;
-    }
-
     if (editData) {
-      onEdit?.({ ...values, avatar, id: editData.id });
+      onEdit?.({ ...values, id: editData.id });
     } else {
-      onAdd?.({ ...values, avatar });
+      onAdd?.({ ...values });
     }
   };
 
@@ -96,7 +84,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<SupplierData>> = ({
           layout="vertical"
           className="mt-3 w-full px-4"
           form={form}
-          initialValues={{ initial_debt: 0 }}
+          initialValues={{ initialDebt: 0 }}
           onFinish={onFinish}
           autoComplete="off"
         >
@@ -114,7 +102,9 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<SupplierData>> = ({
 
           <Form.Item
             name="code"
-            rules={[{ required: true, message: "Vui lòng nhập mã nhà cung cấp" }]}
+            rules={[
+              { required: true, message: "Vui lòng nhập mã nhà cung cấp" },
+            ]}
             className="w-full mt-6"
           >
             <FloatLabel label="Mã nhà cung cấp" required>
@@ -133,7 +123,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<SupplierData>> = ({
           </Form.Item>
 
           <Form.Item
-            name="phone_number"
+            name="phoneNumber"
             rules={[
               {
                 pattern: /^\d{8,15}$/,
@@ -160,7 +150,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<SupplierData>> = ({
           </Form.Item>
 
           <Form.Item
-            name="initial_debt"
+            name="initialDebt"
             rules={[{ required: true, message: "Vui lòng dư nợ bắt đầu" }]}
             className="w-full mt-6"
           >

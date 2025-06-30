@@ -7,7 +7,7 @@ import { WarehouseData } from "../categories/warehouse";
 import { EmployeeData } from "../employee";
 
 export interface PurchaseQuery extends ApiRequestQuery {
-  more_query?: any;
+  moreQuery?: any;
   type?: string;
 }
 
@@ -19,7 +19,7 @@ export interface PurchaseDetailData {
   discount: number;
   vat: number;
   product: ProductData;
-  hair_color: AttributeData;
+  hairColor: AttributeData;
   unit: UnitData;
   warehouse: WarehouseData;
   description?: string;
@@ -27,26 +27,26 @@ export interface PurchaseDetailData {
 
 export interface PurchaseData {
   id: number;
-  time_at?: Date;
-  phone_number: string;
+  timeAt?: Date;
+  phoneNumber: string;
   address?: string | null;
-  purchase_number: string;
+  purchaseNumber: string;
   description?: string | null;
-  total_price: number;
+  totalPrice: number;
 
-  supplier_id?: number;
+  supplierId?: number;
   supplier?: SupplierData;
 
-  employee_purchase_id?: number;
-  employee_purchased?: EmployeeData;
+  employeeId?: number;
+  employee?: EmployeeData;
 
   // TODO: to Add
-  purchase_detail: PurchaseDetailData[];
+  details: PurchaseDetailData[];
 
   // TODO: to Update
-  purchase_detail_create: PurchaseDetailData[];
-  purchase_detail_update: PurchaseDetailData[];
-  purchase_detail_delete: number[];
+  adds: PurchaseDetailData[];
+  updates: PurchaseDetailData[];
+  deletes: number[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type

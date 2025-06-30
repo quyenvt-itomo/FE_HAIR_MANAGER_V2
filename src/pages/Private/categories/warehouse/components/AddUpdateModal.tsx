@@ -27,7 +27,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<WarehouseData>> = ({
     if (editData) {
       form.setFieldsValue({
         ...editData,
-        phase_id: editData.phase?.id,
+        phaseId: editData.phase?.id,
       });
     }
   }, [editData, form, open]);
@@ -100,7 +100,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<WarehouseData>> = ({
         <Row justify="space-around" className="mt-6">
           <Col span={24}>
             <Form.Item
-              name="phone_number"
+              name="phoneNumber"
               rules={[
                 {
                   pattern: /^\d{8,15}$/,
@@ -125,7 +125,7 @@ const AddUpdateModal: React.FC<AddUpdateModalProps<WarehouseData>> = ({
         </Row>
         <Row justify="space-around" className="mt-6">
           <Col span={24}>
-            <Form.Item name="phase_id">
+            <Form.Item name="phaseId">
               <FloatLabel label="Pha">
                 <PhaseSelect placeholder="" defaultData={editData?.phase} />
               </FloatLabel>
