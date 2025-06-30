@@ -6,6 +6,7 @@ import { ExcelSaga } from "./excel/saga";
 import { PhaseSaga } from "./operations/phase/saga";
 // import { ProduceSaga } from "./operations/produce/saga";
 import { PurchaseSaga } from "./operations/purchase/saga";
+import { SaleSaga } from "./operations/sale/saga";
 
 import { ProductSaga } from "./categories/product/saga";
 import { ProductGroupSaga } from "./categories/product_group/saga";
@@ -33,6 +34,7 @@ function* rootSaga() {
     fork(PhaseSaga),
     // fork(ProduceSaga),
     fork(PurchaseSaga),
+    fork(SaleSaga),
 
     // TODO: Categories
     fork(ProductSaga),

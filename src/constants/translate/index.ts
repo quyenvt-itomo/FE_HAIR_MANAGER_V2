@@ -1,10 +1,17 @@
+import auth from "./auth";
+import customer from "./customer";
+import employee from "./employee";
+
 export const ERROR = {
-  auth: {},
+  auth,
 
   // TODO: Operations
   phase: {},
   produce: {},
   purchase: {},
+  sale: {},
+  delivery: {},
+  return: {},
 
   // TODO: Categories
   warehouse: {},
@@ -18,12 +25,12 @@ export const ERROR = {
   hair_type: {},
   unit: {},
 
-  customer: {},
+  customer,
   department: {},
   supplier: {},
 
   // TODO: Employee
-  employee: {},
+  employee,
   user: {},
   permission: {},
   permission_group: {},

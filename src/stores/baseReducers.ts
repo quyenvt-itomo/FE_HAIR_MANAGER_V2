@@ -1,15 +1,18 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { TypeMessage } from "../enums/typeMessage";
 import { MessageToastModel } from "../types/message_toast_model";
-import { PaginationProps, ApiResponse } from "../models/base/api_response_model";
+import {
+  PaginationProps,
+  ApiResponse,
+} from "../models/base/api_response_model";
 
 // ===== Types =====
+export type BaseErrorType = "required" | "invalid" | "not_found" | "duplicate" | "min" | "max";
+export type BaseErrorMethod = "get" | "add" | "update" | "delete";
 
 export interface BaseError {
   key?: string;
   message: string;
-  index_1?: number;
-  index_2?: number;
   value?: number;
   element_key?: string;
 }
@@ -49,9 +52,11 @@ export const createBaseInitialState = <T>(): BaseState<T> => ({
 
 // ===== Reducers Factory =====
 
-export function createBaseReducers<TData, TQuery, TResponse extends ApiResponse>(
-  messages: { ADD: string; UPDATE: string; DELETE: string }
-) {
+export function createBaseReducers<
+  TData,
+  TQuery,
+  TResponse extends ApiResponse
+>(messages: { ADD: string; UPDATE: string; DELETE: string }) {
   return {
     clearMessage: (state: BaseState) => {
       state.message = { type: TypeMessage.none };
@@ -76,10 +81,16 @@ export function createBaseReducers<TData, TQuery, TResponse extends ApiResponse>
       state.message = { type: TypeMessage.success, message: messages.ADD };
       state.isCheckAdd = true;
     },
-    addItemFailure: (state: BaseState, action: PayloadAction<BaseFailurePayload>) => {
+    addItemFailure: (
+      state: BaseState,
+      action: PayloadAction<BaseFailurePayload>
+    ) => {
       state.loading = false;
       state.errors = action.payload.errors;
-      state.message = { type: TypeMessage.error, message: action.payload.message };
+      state.message = {
+        type: TypeMessage.error,
+        message: action.payload.message,
+      };
       state.isCheckAdd = false;
     },
 
@@ -91,10 +102,16 @@ export function createBaseReducers<TData, TQuery, TResponse extends ApiResponse>
       state.data = action.payload.data;
       state.pagination = action.payload.pagination;
     },
-    getAllFailure: (state: BaseState, action: PayloadAction<BaseFailurePayload>) => {
+    getAllFailure: (
+      state: BaseState,
+      action: PayloadAction<BaseFailurePayload>
+    ) => {
       state.loading = false;
       state.errors = action.payload.errors;
-      state.message = { type: TypeMessage.error, message: action.payload.message };
+      state.message = {
+        type: TypeMessage.error,
+        message: action.payload.message,
+      };
     },
 
     getItem: (state: BaseState, action: PayloadAction<number>) => {
@@ -104,10 +121,16 @@ export function createBaseReducers<TData, TQuery, TResponse extends ApiResponse>
       state.loading = false;
       state.dataById = action.payload.data;
     },
-    getItemFailure: (state: BaseState, action: PayloadAction<BaseFailurePayload>) => {
+    getItemFailure: (
+      state: BaseState,
+      action: PayloadAction<BaseFailurePayload>
+    ) => {
       state.loading = false;
       state.errors = action.payload.errors;
-      state.message = { type: TypeMessage.error, message: action.payload.message };
+      state.message = {
+        type: TypeMessage.error,
+        message: action.payload.message,
+      };
     },
 
     updateItem: (state: BaseState, action: PayloadAction<TData>) => {
@@ -118,10 +141,16 @@ export function createBaseReducers<TData, TQuery, TResponse extends ApiResponse>
       state.message = { type: TypeMessage.success, message: messages.UPDATE };
       state.isCheckUpdate = true;
     },
-    updateItemFailure: (state: BaseState, action: PayloadAction<BaseFailurePayload>) => {
+    updateItemFailure: (
+      state: BaseState,
+      action: PayloadAction<BaseFailurePayload>
+    ) => {
       state.loading = false;
       state.errors = action.payload.errors;
-      state.message = { type: TypeMessage.error, message: action.payload.message };
+      state.message = {
+        type: TypeMessage.error,
+        message: action.payload.message,
+      };
     },
 
     deleteItem: (state: BaseState, action: PayloadAction<number>) => {
@@ -132,10 +161,16 @@ export function createBaseReducers<TData, TQuery, TResponse extends ApiResponse>
       state.message = { type: TypeMessage.success, message: messages.DELETE };
       state.isCheckDelete = true;
     },
-    deleteItemFailure: (state: BaseState, action: PayloadAction<BaseFailurePayload>) => {
+    deleteItemFailure: (
+      state: BaseState,
+      action: PayloadAction<BaseFailurePayload>
+    ) => {
       state.loading = false;
       state.errors = action.payload.errors;
-      state.message = { type: TypeMessage.error, message: action.payload.message };
+      state.message = {
+        type: TypeMessage.error,
+        message: action.payload.message,
+      };
     },
   };
 }

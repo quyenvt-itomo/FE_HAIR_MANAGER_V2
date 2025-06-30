@@ -9,6 +9,7 @@ import Client from "./client/slice";
 import Phase from "./operations/phase/slice";
 // import Produce from "./operations/produce/slice";
 import Purchase from "./operations/purchase/slice";
+import Sale from "./operations/sale/slice";
 
 import Product from "./categories/product/slice";
 import ProductGroup from "./categories/product_group/slice";
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   Phase,
   // Produce,
   Purchase,
+  Sale,
 
   // TODO: Categories
   Product,

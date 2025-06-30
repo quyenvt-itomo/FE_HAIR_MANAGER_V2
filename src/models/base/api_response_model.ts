@@ -6,35 +6,14 @@ export interface PaginationProps {
 }
 
 export type summaryKey =
-  | "total_quantity"
-  | "total_money"
-  | "total_amount"
-  | "total_amount_paid"
-  | "total_amount_debt"
-  | "total_commission"
-  | "total_commission_paid"
-  | "total_commission_debt"
-  | "total_quantity_difference"
-  | "total_money_difference"
+  | "totalQuantity"
+  | "totalMoney"
 
   // TODO: Công nợ
-  | "total_beginning_debt"
-  | "total_debt_increase"
-  | "total_debt_reduction"
-  | "total_ending_debt"
-
-  // TODO: Thu chi
-  | "total_income"
-  | "total_expense"
-
-  // TODO: Tiền vay
-  | "total_current_debt"
-  | "total_interest_amount"
-  | "total_payment_amount"
-
-  // TODO: Tiền gửi
-  | "total_compound_interest"
-  | "total_real_compound_interest";
+  | "totalBeginningDebt"
+  | "totalDebtIncrease"
+  | "totalDebtReduction"
+  | "totalEndingDebt"
 
 export type SummaryData = {
   [key in summaryKey]?: number;

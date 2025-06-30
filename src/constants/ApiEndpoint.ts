@@ -43,7 +43,12 @@ export const apiEndpoint = {
 
   // purchase
   purchase: {
-    base: "purchase",
+    base: "order/purchase",
+  },
+
+  // sale
+  sale: {
+    base: "order/sale"
   },
 
   // TODO: Categories
@@ -68,12 +73,12 @@ export const apiEndpoint = {
 
   // customer
   customer: {
-    base: "customer",
+    base: "partner/customer",
   },
 
   // supplier
   supplier: {
-    base: "supplier",
+    base: "partner/supplier",
   },
 
   // user

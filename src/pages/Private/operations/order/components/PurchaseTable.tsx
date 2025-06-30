@@ -1,7 +1,8 @@
-import { Tooltip } from "antd";
+import { Avatar, Tag, Tooltip } from "antd";
 import TableColumnConfig, {
   ObjectTableProps,
 } from "../../../../../components/table/TableColumnConfig";
+import { HOST_URL } from "../../../../../constants/ApiEndpoint";
 import formatMoney from "../../../../../utils/formatMoney";
 import formatWeight from "../../../../../utils/formatWeight";
 import { formatDateDDMMYYYY } from "../../../../../utils/dateUtils";
@@ -12,7 +13,6 @@ import { PermissionMap } from "../../../../../utils/permission_common";
 import { useEffect, useState } from "react";
 
 const PurchaseTable: React.FC<ObjectTableProps> = ({
-  summaryData,
   dataSource,
   onApprove,
   ...rest
@@ -25,32 +25,26 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
   );
 
   useEffect(() => {
-    const summaryRow = {
-      code: "Tổng cộng",
-      totalQuantity: summaryData?.totalQuantity || 0,
-      totalMoney: summaryData?.totalMoney || 0,
-      isSummary: true,
-    };
     const updateData = dataSource.map((item: any) => ({
       ...item,
-      key: item.id.toString(),
+      details: item.details,
     }));
-    setData([summaryRow, ...updateData]);
+    setData(updateData);
   }, [dataSource]);
 
   const columns: any[] = [
     {
-      title: "Ngày mua hàng",
-      dataIndex: "purchaseDate",
-      key: "purchaseDate",
+      title: "Ngày",
+      dataIndex: "timeAt",
+      key: "timeAt",
       width: 150,
       align: "center",
       render: (value: string) => formatDateDDMMYYYY(value),
     },
     {
-      title: "Số phiếu",
-      dataIndex: "code",
-      key: "code",
+      title: "Mã đơn",
+      dataIndex: "bill_number",
+      key: "bill_number",
       width: 150,
     },
     {
@@ -60,10 +54,10 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
       width: 270,
     },
     {
-      title: "Tổng khối lượng",
+      title: "Khối lượng",
       dataIndex: "totalQuantity",
       key: "totalQuantity",
-      width: 180,
+      width: 120,
       align: "right",
       render: (value: number) => formatWeight(value),
     },
@@ -85,17 +79,9 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
       width: 270,
     },
     {
-      title: "Ngày nhập",
-      dataIndex: "timeAt",
-      key: "timeAt",
-      width: 150,
-      align: "center",
-      render: (value: string) => formatDateDDMMYYYY(value),
-    },
-    {
       title: "Ghi chú",
-      dataIndex: "note",
-      key: "note",
+      dataIndex: "description",
+      key: "description",
       render: (text: string) => (
         <Tooltip title={text}>
           <span className="ellipsis-cell w-60">{text}</span>
@@ -106,22 +92,14 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
 
   const detailTableColumns: any = [
     {
-      title: "STT",
-      dataIndex: "index",
-      key: "index",
-      align: "center",
-      width: 50,
-      render: (_: any, __: any, index: number) => index + 1,
-    },
-    {
       title: "Mã hàng",
-      dataIndex: "code",
+      dataIndex: ["product", "code"],
       key: "code",
       width: 200,
     },
     {
       title: "Tên hàng",
-      dataIndex: "productName",
+      dataIndex: ["product", "name"],
       key: "name",
       width: 300,
     },
@@ -155,9 +133,21 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
       render: (value: number) => formatMoney(value),
     },
     {
+      title: "Màu sắc",
+      dataIndex: ["product", "hairColor"],
+      key: "hairColor",
+      width: 130,
+    },
+    {
+      title: "Kích thước (cm)",
+      dataIndex: ["product", "length", "name"],
+      key: "length",
+      width: 150,
+    },
+    {
       title: "Ghi chú",
-      dataIndex: "note",
-      key: "note",
+      dataIndex: "description",
+      key: "description",
       render: (text: string) => (
         <Tooltip title={text}>
           <span className="ellipsis-cell w-full ">{text}</span>
@@ -168,7 +158,6 @@ const PurchaseTable: React.FC<ObjectTableProps> = ({
 
   return (
     <TableColumnConfig
-      hasSummary
       columns={columns}
       detailTableColumns={detailTableColumns}
       dataSource={data}

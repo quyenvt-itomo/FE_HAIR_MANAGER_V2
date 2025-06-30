@@ -8,6 +8,7 @@ import { TypeMessage } from "../enums/typeMessage";
 import { clearMessage as clearMessagePhase } from "../stores/operations/phase/slice";
 // import { clearMessage as clearMessageProduce } from "../stores/operations/produce/slice";
 import { clearMessage as clearMessagePurchase } from "../stores/operations/purchase/slice";
+import { clearMessage as clearMessageSale } from "../stores/operations/sale/slice";
 
 import { clearMessage as clearMessageProduct } from "../stores/categories/product/slice";
 import { clearMessage as clearMessageProductGroup } from "../stores/categories/product_group/slice";
@@ -47,6 +48,10 @@ const MessageToastManager: React.FC<MessageToastManagerProps> = ({
       {
         selector: (state: RootState) => state.Purchase.message,
         clear: clearMessagePurchase,
+      },
+      {
+        selector: (state: RootState) => state.Sale.message,
+        clear: clearMessageSale,
       },
 
       // TODO: Categories

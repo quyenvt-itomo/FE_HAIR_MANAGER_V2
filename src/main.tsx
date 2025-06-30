@@ -4,6 +4,7 @@ import "./index.css";
 import "./animista.css";
 import { Provider } from "react-redux";
 import store from "./stores/index.ts";
+import "./i18n";
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>

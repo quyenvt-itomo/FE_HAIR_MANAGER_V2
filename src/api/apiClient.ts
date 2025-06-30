@@ -21,10 +21,10 @@ export const getData = async <T>(
   } catch (error) {
     if (error instanceof AxiosError) {
       const {
-        statusCode,
-        message = "Error fetching data",
-        errors,
-      } = error.response?.data;
+        statusCode = 500,
+        message = "Máy chủ gặp sự cố",
+        errors = [],
+      } = error.response?.data || {};
       throw { statusCode, message, errors };
     } else {
       throw new Error("Unknown error occurred");
@@ -43,10 +43,10 @@ export const postData = async <T>(
   } catch (error) {
     if (error instanceof AxiosError) {
       const {
-        statusCode,
-        message = "Error posting data",
-        errors,
-      } = error.response?.data;
+        statusCode = 500,
+        message = "Máy chủ gặp sự cố",
+        errors = [],
+      } = error.response?.data || {};
       throw { statusCode, message, errors };
     } else {
       throw new Error("Unknown error occurred");
@@ -65,10 +65,10 @@ export const putData = async <T>(
   } catch (error) {
     if (error instanceof AxiosError) {
       const {
-        statusCode,
-        message = "Error updating data",
-        errors,
-      } = error.response?.data;
+        statusCode = 500,
+        message = "Máy chủ gặp sự cố",
+        errors = [],
+      } = error.response?.data || {};
       throw { statusCode, message, errors };
     } else {
       throw new Error("Unknown error occurred");
@@ -84,10 +84,10 @@ export const deleteData = async <T>(url: string): Promise<ApiResponse<T>> => {
   } catch (error) {
     if (error instanceof AxiosError) {
       const {
-        statusCode,
-        message = "Error deleting data",
-        errors,
-      } = error.response?.data;
+        statusCode = 500,
+        message = "Máy chủ gặp sự cố",
+        errors = [],
+      } = error.response?.data || {};
       throw { statusCode, message, errors };
     } else {
       throw new Error("Unknown error occurred");
@@ -108,10 +108,10 @@ export const deleteMultiData = async <T>(
   } catch (error) {
     if (error instanceof AxiosError) {
       const {
-        statusCode,
-        message = "Error deleting data",
-        errors,
-      } = error.response?.data;
+        statusCode = 500,
+        message = "Máy chủ gặp sự cố",
+        errors = [],
+      } = error.response?.data || {};
       throw { statusCode, message, errors };
     } else {
       throw new Error("Unknown error occurred");

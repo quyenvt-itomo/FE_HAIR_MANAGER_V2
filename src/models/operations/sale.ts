@@ -1,14 +1,14 @@
 import { ApiRequestQuery } from "../base/api_request_model";
 import { ApiResponse } from "../base/api_response_model";
-import { SupplierData } from "../categories/supplier";
+import { CustomerData } from "../categories/customer";
 import { EmployeeData } from "../employee";
 
-export interface PurchaseQuery extends ApiRequestQuery {
+export interface SaleQuery extends ApiRequestQuery {
   moreQuery?: any;
   type?: string;
 }
 
-export interface PurchaseDetailData {
+export interface SaleDetailData {
   id: number;
   code: string;
   productName: string;
@@ -17,18 +17,17 @@ export interface PurchaseDetailData {
   note?: string;
 }
 
-export interface PurchaseData {
+export interface SaleData {
   id: number;
-  timeAt?: string;
-  purchaseDate?: string;
+  timeAt?: Date;
   phoneNumber: string;
   address?: string | null;
-  purchaseNumber: string;
+  orderNumber: string;
   description?: string | null;
   totalPrice: number;
 
   partnerId?: number;
-  partner?: SupplierData;
+  partner?: CustomerData;
 
   employeeId?: number;
   employee?: EmployeeData;
@@ -36,13 +35,13 @@ export interface PurchaseData {
   files: string[];
 
   // TODO: to Add
-  details: PurchaseDetailData[];
+  details: SaleDetailData[];
 
   // TODO: to Update
-  adds: PurchaseDetailData[];
-  updates: PurchaseDetailData[];
+  adds: SaleDetailData[];
+  updates: SaleDetailData[];
   deletes: number[];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface PurchaseResponse extends ApiResponse {}
+export interface SaleResponse extends ApiResponse {}
